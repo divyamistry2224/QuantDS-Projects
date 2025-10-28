@@ -1,0 +1,23 @@
+# --- Core Data & Math ---
+numpy>=2.0
+pandas>=2.0
+scipy>=1.13
+
+# --- Time Series & Forecasting ---
+statsmodels>=0.14
+arch>=6.3
+
+# --- Machine Learning (if using optimization or regression) ---
+scikit-learn>=1.5
+
+# --- Data Collection ---
+yfinance>=0.2.50
+
+# --- Visualization ---
+matplotlib>=3.9
+
+# --- Reporting ---
+reportlab>=4.0
+
+# --- Optional: Dashboard ---
+streamlit>=1.40
