@@ -1,0 +1,12 @@
+  GNU nano 8.3                         .gitignore                         Modified
+
+# macOS files
+.DS_Store
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Jupyter lab build artifacts
+.jupyter/lab/
+
