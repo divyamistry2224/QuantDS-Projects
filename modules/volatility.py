@@ -9,15 +9,18 @@ import matplotlib.pyplot as plt
 
 def fit_garch(returns):
     """Fit a basic GARCH(1,1) model to return series."""
-    model = arch_model(returns.dropna(), vol='Garch', p=1, q=1)
+    series = returns.dropna()
+    if series.empty:
+        raise ValueError("No data available to fit GARCH model.")
+    model = arch_model(series, vol='Garch', p=1, q=1)
     res = model.fit(disp='off')
     return res
 
 def forecast_vol(res, steps=5):
-    """Forecast volatility (variance) over given steps."""
+    """Forecast volatility (standard deviation) over given steps."""
     forecast = res.forecast(horizon=steps)
-    return forecast.variance.values[-1, :]
-
+    vol_forecast = (forecast.variance.values[-1, :])**0.5  # take sqrt
+    return vol_forecast
 
 # Test helper (optional)
 if __name__ == "__main__":

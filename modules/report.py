@@ -64,18 +64,12 @@ def plot_weights(weights_path, output_dir):
 # Main: Generate Report
 # -----------------------------
 def generate_report(weights_path, returns_series):
-    """
-    Generate a quantitative research performance report as PDF.
-    
-    Args:
-        weights_path (str): Path to optimized weights CSV.
-        returns_series (pd.Series): Portfolio or asset return series.
-    
-    Returns:
-        str: Path to generated PDF.
-    """
-    output_dir = os.path.dirname(weights_path)
-    pdf_path = os.path.join(output_dir, "quant_report.pdf")
+    report_path = os.path.join("data/processed", "quant_report.csv")
+    weights = pd.read_csv(weights_path)
+    report_df = weights.copy()
+    report_df['AvgReturn'] = returns_series.mean()
+    report_df.to_csv(report_path, index=False)
+    return report_path
 
     # ---- Generate plots ----
     print("📊 Generating visualizations...")

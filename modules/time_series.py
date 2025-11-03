@@ -30,13 +30,17 @@ def make_stationary(series):
 # ---------------------------
 # 3️⃣ ARIMA Fit + Forecast
 # ---------------------------
-def fit_arima(series, order=(1, 1, 1)):
+def fit_arima(series, order=(1,1,1)):
     """Fit an ARIMA model to a single time series."""
-    model = ARIMA(series.dropna(), order=order)
+    series_clean = series.dropna()
+    if len(series_clean) < (order[0] + order[2] + 1):
+        raise ValueError("Not enough data points to fit ARIMA.")
+    model = ARIMA(series_clean, order=order)
     fitted = model.fit()
     return fitted
 
 def forecast_arima(model, steps=5):
     """Forecast using a fitted ARIMA model."""
     forecast = model.forecast(steps=steps)
-    return forecast
+    forecast_df = pd.DataFrame(forecast, columns=["Forecast"])
+    return forecast_df
