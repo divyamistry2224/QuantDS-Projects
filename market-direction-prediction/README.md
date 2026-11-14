@@ -4,7 +4,7 @@
 
 This project tests whether public news sentiment and macroeconomic indicators add predictive information beyond market behavior, then measures whether a long/cash SPY implementation survives trading costs. It connects public data ingestion, time-aligned features, CatBoost and Random Forest comparisons, chronological validation, financial backtesting, and an interactive research dashboard.
 
-**[Research dashboard](https://divyamistry2224.github.io/QuantDS-Projects/market-direction/)** · [Research note (PDF)](reports/market_research_note.pdf) · [Original results](reports/research_report.md) · [Model card](docs/research/model_card.md) · [Data dictionary](docs/research/data_dictionary.md) · [Notebook](notebooks/research_walkthrough.ipynb)
+**[Live research dashboard](https://divyamistry2224.github.io/QuantDS-Projects/market-direction/)** · [Research note (PDF)](reports/market_research_note.pdf) · [Original results](reports/research_report.md) · [Model card](docs/research/model_card.md) · [Data dictionary](docs/research/data_dictionary.md) · [Notebook](notebooks/research_walkthrough.ipynb)
 
 ![Research integrity](https://github.com/divyamistry2224/QuantDS-Projects/actions/workflows/market-direction.yml/badge.svg)
 
@@ -58,7 +58,7 @@ python scripts/sync_pages.py      # Sync generated dashboard into the portfolio 
 
 ### GitHub Pages setup
 
-The dashboard files are committed and ready to publish. The connected GitHub app cannot enable Pages (GitHub returns HTTP 403). The repository owner must open [Settings → Pages](https://github.com/divyamistry2224/QuantDS-Projects/settings/pages), choose **Deploy from a branch → main → /docs**, and Save. The dashboard URL above becomes available after the Pages build finishes.
+GitHub Pages is enabled for the repository’s **main branch /docs** folder. The dashboard is published at the link above. Future pushes to `main` update the site after the Pages build completes.
 
 To open the dashboard locally:
 
