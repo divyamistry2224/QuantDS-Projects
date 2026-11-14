@@ -53,6 +53,7 @@ pytest -q
 market-direction run              # Reproduce original models and artifacts
 market-direction extension-run    # Reproduce the frozen 32-configuration search
 market-direction profitability    # Add Extra Trees / histogram GB comparisons
+python scripts/sync_pages.py      # Sync generated dashboard into the portfolio Pages folder
 ```
 
 To open the dashboard locally:
@@ -71,6 +72,8 @@ market-direction extension-fetch
 ```
 
 Refreshes replace the respective snapshots and checksums; source revisions may change results. To reproduce the published study, use the committed snapshots rather than refreshing them. Model fitting does not silently fetch data. Run the commands from the repository checkout; paths resolve to that checkout.
+
+The canonical dashboard lives in this project's `docs/` folder. The portfolio serves its matching copy at the repository root's `docs/market-direction/`. Run `python scripts/sync_pages.py` after regenerating artifacts and commit both copies; CI checks that they match. GitHub Pages serves the repository's **main branch /docs** folder.
 
 ## Financial research design
 
