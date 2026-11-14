@@ -1,0 +1,613 @@
+{
+  "objective": "Mean annual validation net Sharpe, with fixed 0.55 trade threshold and 2 bps each side",
+  "selected_on_validation": "logistic__full",
+  "models": [
+    {
+      "id": "extra_trees__market",
+      "family": "Extra Trees",
+      "features": "Market",
+      "cv_net_sharpe": 0.0803977710517807,
+      "cv_balanced_accuracy": 0.5,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5,
+        "roc_auc": 0.5154107671386289,
+        "brier": 0.24838331032091243,
+        "log_loss": 0.6899088258805128
+      },
+      "strategy": {
+        "total_return": -0.02152038904546738,
+        "annual_return": -0.005451034076321526,
+        "annual_volatility": 0.02109240127392756,
+        "sharpe": -0.24854911728901838,
+        "max_drawdown": -0.06813734167901941,
+        "exposure": 0.038883349950149554,
+        "round_trips": 39,
+        "hit_rate": 0.48717948717948717,
+        "profit_factor": 0.8049566421315593
+      },
+      "annual_validation": [
+        {
+          "year": 2019,
+          "total_return": 0.007457455567758453,
+          "annual_return": 0.007457455567758453,
+          "annual_volatility": 0.00751512890270392,
+          "sharpe": 0.9923943246652801,
+          "max_drawdown": -0.005508806343054395,
+          "exposure": 0.031746031746031744,
+          "round_trips": 8,
+          "hit_rate": 0.625,
+          "profit_factor": 2.3515333426350815,
+          "accuracy": 0.5476190476190477,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.4557589626239511,
+          "brier": 0.2484198215899364,
+          "log_loss": 0.68998640751669
+        },
+        {
+          "year": 2020,
+          "total_return": -0.029922217046487454,
+          "annual_return": -0.029805727782555635,
+          "annual_volatility": 0.022106244000542993,
+          "sharpe": -1.3575755862480752,
+          "max_drawdown": -0.029922217046487454,
+          "exposure": 0.007905138339920948,
+          "round_trips": 2,
+          "hit_rate": 0.0,
+          "profit_factor": 0.0,
+          "accuracy": 0.5810276679841897,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.5039147734565523,
+          "brier": 0.24556972399065163,
+          "log_loss": 0.68427205704464
+        },
+        {
+          "year": 2021,
+          "total_return": 0.01728957137571574,
+          "annual_return": 0.01728957137571574,
+          "annual_volatility": 0.02895928887032357,
+          "sharpe": 0.6063745747381372,
+          "max_drawdown": -0.017377191134587022,
+          "exposure": 0.0992063492063492,
+          "round_trips": 25,
+          "hit_rate": 0.52,
+          "profit_factor": 1.3746012413592072,
+          "accuracy": 0.5436507936507936,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.4580768010155506,
+          "brier": 0.2485224022891683,
+          "log_loss": 0.690192493855328
+        }
+      ],
+      "status": "Exploratory reused 2022\u20132025 sample; not fresh confirmation"
+    },
+    {
+      "id": "extra_trees__full",
+      "family": "Extra Trees",
+      "features": "Full",
+      "cv_net_sharpe": -0.18859284888234043,
+      "cv_balanced_accuracy": 0.5067482370522579,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5,
+        "roc_auc": 0.49170866330693547,
+        "brier": 0.24882425537494093,
+        "log_loss": 0.6907937238398638
+      },
+      "strategy": {
+        "total_return": 0.015462679045648908,
+        "annual_return": 0.003862651465135869,
+        "annual_volatility": 0.013515313934059095,
+        "sharpe": 0.29199038919122544,
+        "max_drawdown": -0.02409034674769117,
+        "exposure": 0.020937188434695914,
+        "round_trips": 21,
+        "hit_rate": 0.5714285714285714,
+        "profit_factor": 1.424372012059219
+      },
+      "annual_validation": [
+        {
+          "year": 2019,
+          "total_return": 0.0,
+          "annual_return": 0.0,
+          "annual_volatility": 0.0,
+          "sharpe": 0.0,
+          "max_drawdown": 0.0,
+          "exposure": 0.0,
+          "round_trips": 0,
+          "hit_rate": null,
+          "profit_factor": null,
+          "accuracy": 0.5634920634920635,
+          "balanced_accuracy": 0.5236460717009916,
+          "roc_auc": 0.47215865751334857,
+          "brier": 0.2490159503972024,
+          "log_loss": 0.691179573004032
+        },
+        {
+          "year": 2020,
+          "total_return": -0.04676381389708739,
+          "annual_return": -0.046583350443726634,
+          "annual_volatility": 0.07340732714760605,
+          "sharpe": -0.6129896191710019,
+          "max_drawdown": -0.09203531539846455,
+          "exposure": 0.24110671936758893,
+          "round_trips": 61,
+          "hit_rate": 0.5409836065573771,
+          "profit_factor": 0.8113612783545551,
+          "accuracy": 0.5770750988142292,
+          "balanced_accuracy": 0.4965986394557823,
+          "roc_auc": 0.48607367475292,
+          "brier": 0.24609101653548462,
+          "log_loss": 0.6853135733077697
+        },
+        {
+          "year": 2021,
+          "total_return": 0.0011163223491423846,
+          "annual_return": 0.0011163223491423846,
+          "annual_volatility": 0.04738008122530598,
+          "sharpe": 0.04721107252398058,
+          "max_drawdown": -0.04852141155899248,
+          "exposure": 0.1865079365079365,
+          "round_trips": 47,
+          "hit_rate": 0.5531914893617021,
+          "profit_factor": 1.017099796496569,
+          "accuracy": 0.5436507936507936,
+          "balanced_accuracy": 0.5,
+          "roc_auc": 0.4874008251348778,
+          "brier": 0.24842598136285401,
+          "log_loss": 0.6899962028349886
+        }
+      ],
+      "status": "Exploratory reused 2022\u20132025 sample; not fresh confirmation"
+    },
+    {
+      "id": "histogram_gb__market",
+      "family": "Histogram GB",
+      "features": "Market",
+      "cv_net_sharpe": -0.15531586698311908,
+      "cv_balanced_accuracy": 0.48515911139083595,
+      "holdout": {
+        "accuracy": 0.5284147557328016,
+        "balanced_accuracy": 0.5030597552195825,
+        "roc_auc": 0.5170666346692265,
+        "brier": 0.24953917458793173,
+        "log_loss": 0.6923048219455753
+      },
+      "strategy": {
+        "total_return": 0.1504480000067019,
+        "annual_return": 0.0358398254324217,
+        "annual_volatility": 0.10921063113643567,
+        "sharpe": 0.37601118056853894,
+        "max_drawdown": -0.15131836672418153,
+        "exposure": 0.5064805583250249,
+        "round_trips": 508,
+        "hit_rate": 0.5354330708661418,
+        "profit_factor": 1.1081189892747463
+      },
+      "annual_validation": [
+        {
+          "year": 2019,
+          "total_return": -0.05578050664520806,
+          "annual_return": -0.05578050664520806,
+          "annual_volatility": 0.061387647720076086,
+          "sharpe": -0.9042076141760026,
+          "max_drawdown": -0.10155537095617495,
+          "exposure": 0.4444444444444444,
+          "round_trips": 112,
+          "hit_rate": 0.5267857142857143,
+          "profit_factor": 0.7920084866551406,
+          "accuracy": 0.5238095238095238,
+          "balanced_accuracy": 0.501906941266209,
+          "roc_auc": 0.48992499364352915,
+          "brier": 0.2528690216072921,
+          "log_loss": 0.6990931401835758
+        },
+        {
+          "year": 2020,
+          "total_return": -0.016816047008349932,
+          "annual_return": -0.016750140222297816,
+          "annual_volatility": 0.11593409546263027,
+          "sharpe": -0.08812130608470367,
+          "max_drawdown": -0.11669396022426093,
+          "exposure": 0.391304347826087,
+          "round_trips": 99,
+          "hit_rate": 0.5151515151515151,
+          "profit_factor": 0.9750334262680846,
+          "accuracy": 0.5217391304347826,
+          "balanced_accuracy": 0.48844820947246825,
+          "roc_auc": 0.4683609292773713,
+          "brier": 0.2528978137082711,
+          "log_loss": 0.6993205223397737
+        },
+        {
+          "year": 2021,
+          "total_return": 0.03662303061335459,
+          "annual_return": 0.03662303061335459,
+          "annual_volatility": 0.07345368104603403,
+          "sharpe": 0.526381319311349,
+          "max_drawdown": -0.060372723658161376,
+          "exposure": 0.5238095238095238,
+          "round_trips": 132,
+          "hit_rate": 0.5454545454545454,
+          "profit_factor": 1.1263803279541535,
+          "accuracy": 0.49206349206349204,
+          "balanced_accuracy": 0.46512218343383055,
+          "roc_auc": 0.4807997461123453,
+          "brier": 0.2540287034314884,
+          "log_loss": 0.7013348125072255
+        }
+      ],
+      "status": "Exploratory reused 2022\u20132025 sample; not fresh confirmation"
+    },
+    {
+      "id": "histogram_gb__full",
+      "family": "Histogram GB",
+      "features": "Full",
+      "cv_net_sharpe": -0.057759781877377035,
+      "cv_balanced_accuracy": 0.4864238660261144,
+      "holdout": {
+        "accuracy": 0.5134596211365903,
+        "balanced_accuracy": 0.5093432525397968,
+        "roc_auc": 0.5087592992560594,
+        "brier": 0.2519433630058112,
+        "log_loss": 0.6971286826463355
+      },
+      "strategy": {
+        "total_return": 0.1337340765173889,
+        "annual_return": 0.03203811127975387,
+        "annual_volatility": 0.08407713030658304,
+        "sharpe": 0.41573002425897215,
+        "max_drawdown": -0.11829458158907324,
+        "exposure": 0.2073778664007976,
+        "round_trips": 208,
+        "hit_rate": 0.5048076923076923,
+        "profit_factor": 1.228074307892671
+      },
+      "annual_validation": [
+        {
+          "year": 2019,
+          "total_return": -0.014068287477393082,
+          "annual_return": -0.014068287477393082,
+          "annual_volatility": 0.055871574597182526,
+          "sharpe": -0.2257358277133907,
+          "max_drawdown": -0.08388930661555771,
+          "exposure": 0.4126984126984127,
+          "round_trips": 104,
+          "hit_rate": 0.5096153846153846,
+          "profit_factor": 0.9411428155924954,
+          "accuracy": 0.5238095238095238,
+          "balanced_accuracy": 0.5072463768115942,
+          "roc_auc": 0.48557081108568523,
+          "brier": 0.25435758007941617,
+          "log_loss": 0.7022402039501139
+        },
+        {
+          "year": 2020,
+          "total_return": 0.06229748209658825,
+          "annual_return": 0.06204376186916605,
+          "annual_volatility": 0.08910714039238181,
+          "sharpe": 0.719984778860194,
+          "max_drawdown": -0.10656877204514703,
+          "exposure": 0.33992094861660077,
+          "round_trips": 86,
+          "hit_rate": 0.6046511627906976,
+          "profit_factor": 1.2333289802324772,
+          "accuracy": 0.4980237154150198,
+          "balanced_accuracy": 0.4864587344371711,
+          "roc_auc": 0.49101527403414197,
+          "brier": 0.2550713273457186,
+          "log_loss": 0.7036528329564561
+        },
+        {
+          "year": 2021,
+          "total_return": -0.04325415069095373,
+          "annual_return": -0.04325415069095373,
+          "annual_volatility": 0.06323715264990634,
+          "sharpe": -0.6675282967789343,
+          "max_drawdown": -0.06353686430804695,
+          "exposure": 0.25,
+          "round_trips": 63,
+          "hit_rate": 0.5079365079365079,
+          "profit_factor": 0.8070768786116773,
+          "accuracy": 0.46825396825396826,
+          "balanced_accuracy": 0.4655664868295779,
+          "roc_auc": 0.46404316090130115,
+          "brier": 0.25840963750795065,
+          "log_loss": 0.7104880250926607
+        }
+      ],
+      "status": "Exploratory reused 2022\u20132025 sample; not fresh confirmation"
+    },
+    {
+      "id": "catboost__market",
+      "family": "CatBoost",
+      "features": "Market",
+      "cv_net_sharpe": -0.13516398631899532,
+      "cv_balanced_accuracy": 0.5064817605519251,
+      "holdout": {
+        "accuracy": 0.5343968095712861,
+        "balanced_accuracy": 0.508615310775138,
+        "roc_auc": 0.5386049116070715,
+        "brier": 0.2480257476429464,
+        "log_loss": 0.6892168274194106
+      },
+      "strategy": {
+        "total_return": 0.2543450652646808,
+        "annual_return": 0.05858786139370209,
+        "annual_volatility": 0.08874678080512101,
+        "sharpe": 0.6858484827362852,
+        "max_drawdown": -0.10588652470077864,
+        "exposure": 0.4935194416749751,
+        "round_trips": 495,
+        "hit_rate": 0.5494949494949495,
+        "profit_factor": 1.1893496046315788
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "catboost__market_macro",
+      "family": "CatBoost",
+      "features": "Market + macro",
+      "cv_net_sharpe": -0.48094555768895714,
+      "cv_balanced_accuracy": 0.4991060720811625,
+      "holdout": {
+        "accuracy": 0.5343968095712861,
+        "balanced_accuracy": 0.5140048796096313,
+        "roc_auc": 0.536281097512199,
+        "brier": 0.24811730039917831,
+        "log_loss": 0.6894283032493491
+      },
+      "strategy": {
+        "total_return": 0.37270187457812853,
+        "annual_return": 0.08284304789419239,
+        "annual_volatility": 0.10986367102424693,
+        "sharpe": 0.7783614643983704,
+        "max_drawdown": -0.08601790190802205,
+        "exposure": 0.4456630109670987,
+        "round_trips": 447,
+        "hit_rate": 0.5503355704697986,
+        "profit_factor": 1.2542780220181031
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "catboost__market_sentiment",
+      "family": "CatBoost",
+      "features": "Market + sentiment",
+      "cv_net_sharpe": -0.2523119651220452,
+      "cv_balanced_accuracy": 0.5025705808099592,
+      "holdout": {
+        "accuracy": 0.5254237288135594,
+        "balanced_accuracy": 0.49889608831293497,
+        "roc_auc": 0.5033277337812975,
+        "brier": 0.25088456152946575,
+        "log_loss": 0.694973013942893
+      },
+      "strategy": {
+        "total_return": 0.09387513766567968,
+        "annual_return": 0.02279948781549801,
+        "annual_volatility": 0.11220834965094087,
+        "sharpe": 0.2559467533523547,
+        "max_drawdown": -0.18094025455558416,
+        "exposure": 0.4935194416749751,
+        "round_trips": 495,
+        "hit_rate": 0.5232323232323233,
+        "profit_factor": 1.0739038812406727
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "catboost__full",
+      "family": "CatBoost",
+      "features": "Full",
+      "cv_net_sharpe": -0.22189523658672247,
+      "cv_balanced_accuracy": 0.48617131398619184,
+      "holdout": {
+        "accuracy": 0.5294117647058824,
+        "balanced_accuracy": 0.5107611391088713,
+        "roc_auc": 0.5135229181665466,
+        "brier": 0.25035352205169425,
+        "log_loss": 0.6939376050487323
+      },
+      "strategy": {
+        "total_return": 0.27484154026220686,
+        "annual_return": 0.06290751486761148,
+        "annual_volatility": 0.10586809811666799,
+        "sharpe": 0.628095057840129,
+        "max_drawdown": -0.0829589932279895,
+        "exposure": 0.3629112662013958,
+        "round_trips": 364,
+        "hit_rate": 0.5384615384615384,
+        "profit_factor": 1.2304750277290908
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "random_forest__market",
+      "family": "Random Forest",
+      "features": "Market",
+      "cv_net_sharpe": -0.8082052722453613,
+      "cv_balanced_accuracy": 0.4972675996980949,
+      "holdout": {
+        "accuracy": 0.5463609172482552,
+        "balanced_accuracy": 0.515260779137669,
+        "roc_auc": 0.510923126149908,
+        "brier": 0.24862120821325792,
+        "log_loss": 0.690393112310715
+      },
+      "strategy": {
+        "total_return": -0.043860643596650095,
+        "annual_return": -0.011205543299216858,
+        "annual_volatility": 0.09644589987634285,
+        "sharpe": -0.06966261226442101,
+        "max_drawdown": -0.16408868199368154,
+        "exposure": 0.4666001994017946,
+        "round_trips": 468,
+        "hit_rate": 0.5149572649572649,
+        "profit_factor": 0.9795762321906216
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "random_forest__market_macro",
+      "family": "Random Forest",
+      "features": "Market + macro",
+      "cv_net_sharpe": -0.6371269408988784,
+      "cv_balanced_accuracy": 0.4848255889861306,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5097012239020878,
+        "roc_auc": 0.5294096472282218,
+        "brier": 0.24783813993867457,
+        "log_loss": 0.688804843810914
+      },
+      "strategy": {
+        "total_return": 0.1365806704671506,
+        "annual_return": 0.03268854318621317,
+        "annual_volatility": 0.04292034838233236,
+        "sharpe": 0.7709435604512985,
+        "max_drawdown": -0.039289088711917386,
+        "exposure": 0.18943170488534397,
+        "round_trips": 190,
+        "hit_rate": 0.6,
+        "profit_factor": 1.3531154386675488
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "random_forest__market_sentiment",
+      "family": "Random Forest",
+      "features": "Market + sentiment",
+      "cv_net_sharpe": -0.6155253519563183,
+      "cv_balanced_accuracy": 0.4944998179138158,
+      "holdout": {
+        "accuracy": 0.5264207377866401,
+        "balanced_accuracy": 0.4935085193184546,
+        "roc_auc": 0.5095552355811535,
+        "brier": 0.24893818485744804,
+        "log_loss": 0.6910222681578637
+      },
+      "strategy": {
+        "total_return": -0.061702743535118953,
+        "annual_return": -0.01587414765664108,
+        "annual_volatility": 0.09298996365845076,
+        "sharpe": -0.12669393167907428,
+        "max_drawdown": -0.1880924646860479,
+        "exposure": 0.4247258225324028,
+        "round_trips": 426,
+        "hit_rate": 0.5070422535211268,
+        "profit_factor": 0.9610376180740621
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "random_forest__full",
+      "family": "Random Forest",
+      "features": "Full",
+      "cv_net_sharpe": -0.722861596552958,
+      "cv_balanced_accuracy": 0.4857307412288618,
+      "holdout": {
+        "accuracy": 0.5304087736789631,
+        "balanced_accuracy": 0.4990600751939845,
+        "roc_auc": 0.5091712662986961,
+        "brier": 0.2486998276997147,
+        "log_loss": 0.6905438879303882
+      },
+      "strategy": {
+        "total_return": 0.06621684442967979,
+        "annual_return": 0.01623953803242828,
+        "annual_volatility": 0.05142358440634186,
+        "sharpe": 0.33885532450853756,
+        "max_drawdown": -0.07707954144669571,
+        "exposure": 0.20039880358923232,
+        "round_trips": 201,
+        "hit_rate": 0.5323383084577115,
+        "profit_factor": 1.1459111515168636
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "logistic__full",
+      "family": "Logistic",
+      "features": "Full",
+      "cv_net_sharpe": 0.12199406554607084,
+      "cv_balanced_accuracy": 0.514783986538152,
+      "holdout": {
+        "accuracy": 0.49252243270189433,
+        "balanced_accuracy": 0.4860491160707143,
+        "roc_auc": 0.4876129909607231,
+        "brier": 0.25092083415367683,
+        "log_loss": 0.69498673751884
+      },
+      "strategy": {
+        "total_return": 0.12146277351617352,
+        "annual_return": 0.029220103119588448,
+        "annual_volatility": 0.07935083390076672,
+        "sharpe": 0.4012380038188434,
+        "max_drawdown": -0.06975598909074365,
+        "exposure": 0.10069790628115653,
+        "round_trips": 101,
+        "hit_rate": 0.5247524752475248,
+        "profit_factor": 1.3231819362421136
+      },
+      "status": "Original recorded result"
+    },
+    {
+      "id": "majority_baseline",
+      "family": "Majority baseline",
+      "features": "None",
+      "cv_net_sharpe": 0.0,
+      "cv_balanced_accuracy": 0.5,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5,
+        "roc_auc": 0.5,
+        "brier": 0.24852855345416947,
+        "log_loss": 0.6902014103567182
+      },
+      "strategy": {
+        "total_return": 0.0,
+        "annual_return": 0.0,
+        "annual_volatility": 0.0,
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "exposure": 0.0,
+        "round_trips": 0,
+        "hit_rate": null,
+        "profit_factor": null
+      },
+      "status": "Original recorded result"
+    }
+  ],
+  "warning": "Profit-focused analysis was added after observing the original holdout. New model results on 2022\u20132025 are exploratory. Positive historical profit does not prove future profitability or benchmark outperformance.",
+  "benchmarks": {
+    "always_long_intraday": {
+      "total_return": -0.17433157610868433,
+      "annual_return": -0.04698938681253273,
+      "annual_volatility": 0.15220168064557216,
+      "sharpe": -0.24071615056934537,
+      "max_drawdown": -0.24435208319377044,
+      "exposure": 1.0,
+      "round_trips": 1003,
+      "hit_rate": 0.514456630109671,
+      "profit_factor": 0.9566428043900967
+    },
+    "buy_and_hold_close_to_close": {
+      "total_return": 0.5172192635619326,
+      "annual_return": 0.11042113836076384,
+      "annual_volatility": 0.18006195273379322,
+      "sharpe": 0.6715224396909616,
+      "max_drawdown": -0.24496395660775794,
+      "exposure": 1.0,
+      "round_trips": 1,
+      "hit_rate": 0.5383848454636092,
+      "profit_factor": 1.1283598588835995
+    }
+  },
+  "period": {
+    "start": "2022-01-03",
+    "end": "2025-12-31",
+    "rows": 1003,
+    "up_rate": 0.5383848454636092
+  }
+}

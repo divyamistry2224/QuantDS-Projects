@@ -1,0 +1,2096 @@
+{
+  "title": "Market Direction Research",
+  "generated_at_utc": "2026-11-14T06:54:32.925018+00:00",
+  "code_revision": "2467f6f3927e03c7a839642638f7661d2c7aa872",
+  "universe": "SPY \u2014 S&P 500 ETF",
+  "target": "Next trading session close / open \u2212 1 > 0",
+  "decision_time": "After signal-date close; execute at next session open and exit that session close",
+  "training": {
+    "start": "2006-01-04",
+    "end": "2021-12-23",
+    "rows": 4022
+  },
+  "validation_years": [
+    2019,
+    2020,
+    2021
+  ],
+  "holdout": {
+    "start": "2022-01-03",
+    "end": "2025-12-31",
+    "rows": 1003,
+    "up_rate": 0.5383848454636092
+  },
+  "protocol": {
+    "selection": "Highest mean validation balanced accuracy; ROC AUC tie-breaker. Equal weight per year. Fixed hyperparameters. No holdout tuning.",
+    "gap_sessions": 5,
+    "threshold": 0.55,
+    "cost_per_side_bps": 2.0,
+    "seed": 42,
+    "risk_free_rate": 0.0,
+    "annual_sessions": 252,
+    "cash_yield": 0.0,
+    "vintage_warning": "Latest downloaded revisions, not point-in-time vintages. Availability lags are assumptions, not verified historical publication timestamps."
+  },
+  "selected_model": "logistic__full",
+  "models": [
+    {
+      "id": "catboost__market",
+      "family": "CatBoost",
+      "features": "Market",
+      "feature_count": 10,
+      "cv_balanced_accuracy": 0.5064817605519251,
+      "cv_balanced_accuracy_std": 0.00691073873865898,
+      "cv_roc_auc": 0.4881273267953076,
+      "holdout": {
+        "accuracy": 0.5343968095712861,
+        "balanced_accuracy": 0.508615310775138,
+        "roc_auc": 0.5386049116070715,
+        "brier": 0.2480257476429464,
+        "log_loss": 0.6892168274194106
+      },
+      "strategy": {
+        "total_return": 0.2543450652646808,
+        "annual_return": 0.05858786139370209,
+        "annual_volatility": 0.08874678080512101,
+        "sharpe": 0.6858484827362852,
+        "max_drawdown": -0.10588652470077864,
+        "exposure": 0.4935194416749751,
+        "round_trips": 495,
+        "hit_rate": 0.5494949494949495,
+        "profit_factor": 1.1893496046315788
+      },
+      "calibration": [
+        {
+          "predicted": 0.37591585416027984,
+          "observed": 1.0,
+          "count": 3
+        },
+        {
+          "predicted": 0.4717138178101327,
+          "observed": 0.5031055900621118,
+          "count": 161
+        },
+        {
+          "predicted": 0.5510532027054836,
+          "observed": 0.5350993377483444,
+          "count": 755
+        },
+        {
+          "predicted": 0.6197643223059592,
+          "observed": 0.6190476190476191,
+          "count": 84
+        }
+      ]
+    },
+    {
+      "id": "catboost__market_macro",
+      "family": "CatBoost",
+      "features": "Market + macro",
+      "feature_count": 19,
+      "cv_balanced_accuracy": 0.4991060720811625,
+      "cv_balanced_accuracy_std": 0.014680541506311215,
+      "cv_roc_auc": 0.4952961020614571,
+      "holdout": {
+        "accuracy": 0.5343968095712861,
+        "balanced_accuracy": 0.5140048796096313,
+        "roc_auc": 0.536281097512199,
+        "brier": 0.24811730039917831,
+        "log_loss": 0.6894283032493491
+      },
+      "strategy": {
+        "total_return": 0.37270187457812853,
+        "annual_return": 0.08284304789419239,
+        "annual_volatility": 0.10986367102424693,
+        "sharpe": 0.7783614643983704,
+        "max_drawdown": -0.08601790190802205,
+        "exposure": 0.4456630109670987,
+        "round_trips": 447,
+        "hit_rate": 0.5503355704697986,
+        "profit_factor": 1.2542780220181031
+      },
+      "calibration": [
+        {
+          "predicted": 0.3870590589929783,
+          "observed": 0.0,
+          "count": 5
+        },
+        {
+          "predicted": 0.4697747365976473,
+          "observed": 0.519650655021834,
+          "count": 229
+        },
+        {
+          "predicted": 0.5482533893411007,
+          "observed": 0.5443686006825939,
+          "count": 586
+        },
+        {
+          "predicted": 0.6241378644902402,
+          "observed": 0.5573770491803278,
+          "count": 183
+        }
+      ]
+    },
+    {
+      "id": "catboost__market_sentiment",
+      "family": "CatBoost",
+      "features": "Market + sentiment",
+      "feature_count": 15,
+      "cv_balanced_accuracy": 0.5025705808099592,
+      "cv_balanced_accuracy_std": 0.022431553959376373,
+      "cv_roc_auc": 0.4980125475688498,
+      "holdout": {
+        "accuracy": 0.5254237288135594,
+        "balanced_accuracy": 0.49889608831293497,
+        "roc_auc": 0.5033277337812975,
+        "brier": 0.25088456152946575,
+        "log_loss": 0.694973013942893
+      },
+      "strategy": {
+        "total_return": 0.09387513766567968,
+        "annual_return": 0.02279948781549801,
+        "annual_volatility": 0.11220834965094087,
+        "sharpe": 0.2559467533523547,
+        "max_drawdown": -0.18094025455558416,
+        "exposure": 0.4935194416749751,
+        "round_trips": 495,
+        "hit_rate": 0.5232323232323233,
+        "profit_factor": 1.0739038812406727
+      },
+      "calibration": [
+        {
+          "predicted": 0.3774716758531426,
+          "observed": 0.6,
+          "count": 5
+        },
+        {
+          "predicted": 0.4692886482553464,
+          "observed": 0.54,
+          "count": 150
+        },
+        {
+          "predicted": 0.5507992597141895,
+          "observed": 0.5352862849533955,
+          "count": 751
+        },
+        {
+          "predicted": 0.6181313169397133,
+          "observed": 0.5567010309278351,
+          "count": 97
+        }
+      ]
+    },
+    {
+      "id": "catboost__full",
+      "family": "CatBoost",
+      "features": "Full",
+      "feature_count": 24,
+      "cv_balanced_accuracy": 0.48617131398619184,
+      "cv_balanced_accuracy_std": 0.005091033396191328,
+      "cv_roc_auc": 0.48590282552975533,
+      "holdout": {
+        "accuracy": 0.5294117647058824,
+        "balanced_accuracy": 0.5107611391088713,
+        "roc_auc": 0.5135229181665466,
+        "brier": 0.25035352205169425,
+        "log_loss": 0.6939376050487323
+      },
+      "strategy": {
+        "total_return": 0.27484154026220686,
+        "annual_return": 0.06290751486761148,
+        "annual_volatility": 0.10586809811666799,
+        "sharpe": 0.628095057840129,
+        "max_drawdown": -0.0829589932279895,
+        "exposure": 0.3629112662013958,
+        "round_trips": 364,
+        "hit_rate": 0.5384615384615384,
+        "profit_factor": 1.2304750277290908
+      },
+      "calibration": [
+        {
+          "predicted": 0.3576566654054574,
+          "observed": 1.0,
+          "count": 2
+        },
+        {
+          "predicted": 0.47014224454129233,
+          "observed": 0.5137254901960784,
+          "count": 255
+        },
+        {
+          "predicted": 0.5459123012305738,
+          "observed": 0.5409836065573771,
+          "count": 671
+        },
+        {
+          "predicted": 0.6168478160204892,
+          "observed": 0.5866666666666667,
+          "count": 75
+        }
+      ]
+    },
+    {
+      "id": "random_forest__market",
+      "family": "Random Forest",
+      "features": "Market",
+      "feature_count": 10,
+      "cv_balanced_accuracy": 0.4972675996980949,
+      "cv_balanced_accuracy_std": 0.014987332029889631,
+      "cv_roc_auc": 0.4895915661005019,
+      "holdout": {
+        "accuracy": 0.5463609172482552,
+        "balanced_accuracy": 0.515260779137669,
+        "roc_auc": 0.510923126149908,
+        "brier": 0.24862120821325792,
+        "log_loss": 0.690393112310715
+      },
+      "strategy": {
+        "total_return": -0.043860643596650095,
+        "annual_return": -0.011205543299216858,
+        "annual_volatility": 0.09644589987634285,
+        "sharpe": -0.06966261226442101,
+        "max_drawdown": -0.16408868199368154,
+        "exposure": 0.4666001994017946,
+        "round_trips": 468,
+        "hit_rate": 0.5149572649572649,
+        "profit_factor": 0.9795762321906216
+      },
+      "calibration": [
+        {
+          "predicted": 0.4805376044462619,
+          "observed": 0.4574468085106383,
+          "count": 94
+        },
+        {
+          "predicted": 0.5492317236200663,
+          "observed": 0.5462555066079295,
+          "count": 908
+        },
+        {
+          "predicted": 0.600619101688658,
+          "observed": 1.0,
+          "count": 1
+        }
+      ]
+    },
+    {
+      "id": "random_forest__market_macro",
+      "family": "Random Forest",
+      "features": "Market + macro",
+      "feature_count": 19,
+      "cv_balanced_accuracy": 0.4848255889861306,
+      "cv_balanced_accuracy_std": 0.012766688864735328,
+      "cv_roc_auc": 0.479712646503059,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5097012239020878,
+        "roc_auc": 0.5294096472282218,
+        "brier": 0.24783813993867457,
+        "log_loss": 0.688804843810914
+      },
+      "strategy": {
+        "total_return": 0.1365806704671506,
+        "annual_return": 0.03268854318621317,
+        "annual_volatility": 0.04292034838233236,
+        "sharpe": 0.7709435604512985,
+        "max_drawdown": -0.039289088711917386,
+        "exposure": 0.18943170488534397,
+        "round_trips": 190,
+        "hit_rate": 0.6,
+        "profit_factor": 1.3531154386675488
+      },
+      "calibration": [
+        {
+          "predicted": 0.48759943768537306,
+          "observed": 0.5,
+          "count": 126
+        },
+        {
+          "predicted": 0.5341229688991116,
+          "observed": 0.5438996579247435,
+          "count": 877
+        }
+      ]
+    },
+    {
+      "id": "random_forest__market_sentiment",
+      "family": "Random Forest",
+      "features": "Market + sentiment",
+      "feature_count": 15,
+      "cv_balanced_accuracy": 0.4944998179138158,
+      "cv_balanced_accuracy_std": 0.01692079426971063,
+      "cv_roc_auc": 0.4894920739528726,
+      "holdout": {
+        "accuracy": 0.5264207377866401,
+        "balanced_accuracy": 0.4935085193184546,
+        "roc_auc": 0.5095552355811535,
+        "brier": 0.24893818485744804,
+        "log_loss": 0.6910222681578637
+      },
+      "strategy": {
+        "total_return": -0.061702743535118953,
+        "annual_return": -0.01587414765664108,
+        "annual_volatility": 0.09298996365845076,
+        "sharpe": -0.12669393167907428,
+        "max_drawdown": -0.1880924646860479,
+        "exposure": 0.4247258225324028,
+        "round_trips": 426,
+        "hit_rate": 0.5070422535211268,
+        "profit_factor": 0.9610376180740621
+      },
+      "calibration": [
+        {
+          "predicted": 0.48605713608654216,
+          "observed": 0.5833333333333334,
+          "count": 72
+        },
+        {
+          "predicted": 0.5457207437463771,
+          "observed": 0.5345572354211663,
+          "count": 926
+        },
+        {
+          "predicted": 0.6053775139066341,
+          "observed": 0.6,
+          "count": 5
+        }
+      ]
+    },
+    {
+      "id": "random_forest__full",
+      "family": "Random Forest",
+      "features": "Full",
+      "feature_count": 24,
+      "cv_balanced_accuracy": 0.4857307412288618,
+      "cv_balanced_accuracy_std": 0.01087410492968427,
+      "cv_roc_auc": 0.49061435950882215,
+      "holdout": {
+        "accuracy": 0.5304087736789631,
+        "balanced_accuracy": 0.4990600751939845,
+        "roc_auc": 0.5091712662986961,
+        "brier": 0.2486998276997147,
+        "log_loss": 0.6905438879303882
+      },
+      "strategy": {
+        "total_return": 0.06621684442967979,
+        "annual_return": 0.01623953803242828,
+        "annual_volatility": 0.05142358440634186,
+        "sharpe": 0.33885532450853756,
+        "max_drawdown": -0.07707954144669571,
+        "exposure": 0.20039880358923232,
+        "round_trips": 201,
+        "hit_rate": 0.5323383084577115,
+        "profit_factor": 1.1459111515168636
+      },
+      "calibration": [
+        {
+          "predicted": 0.4892631610882855,
+          "observed": 0.5434782608695652,
+          "count": 92
+        },
+        {
+          "predicted": 0.534898395249674,
+          "observed": 0.5378704720087816,
+          "count": 911
+        }
+      ]
+    },
+    {
+      "id": "logistic__full",
+      "family": "Logistic",
+      "features": "Full",
+      "feature_count": 24,
+      "cv_balanced_accuracy": 0.514783986538152,
+      "cv_balanced_accuracy_std": 0.017125365420106387,
+      "cv_roc_auc": 0.5187686603964886,
+      "holdout": {
+        "accuracy": 0.49252243270189433,
+        "balanced_accuracy": 0.4860491160707143,
+        "roc_auc": 0.4876129909607231,
+        "brier": 0.25092083415367683,
+        "log_loss": 0.69498673751884
+      },
+      "strategy": {
+        "total_return": 0.12146277351617352,
+        "annual_return": 0.029220103119588448,
+        "annual_volatility": 0.07935083390076672,
+        "sharpe": 0.4012380038188434,
+        "max_drawdown": -0.06975598909074365,
+        "exposure": 0.10069790628115653,
+        "round_trips": 101,
+        "hit_rate": 0.5247524752475248,
+        "profit_factor": 1.3231819362421136
+      },
+      "calibration": [
+        {
+          "predicted": 0.3867925502679224,
+          "observed": 0.3333333333333333,
+          "count": 3
+        },
+        {
+          "predicted": 0.4766899389275869,
+          "observed": 0.5566265060240964,
+          "count": 415
+        },
+        {
+          "predicted": 0.528275163123348,
+          "observed": 0.5249569707401033,
+          "count": 581
+        },
+        {
+          "predicted": 0.6204470407877329,
+          "observed": 0.75,
+          "count": 4
+        }
+      ]
+    },
+    {
+      "id": "majority_baseline",
+      "family": "Majority baseline",
+      "features": "None",
+      "feature_count": 0,
+      "cv_balanced_accuracy": 0.5,
+      "cv_balanced_accuracy_std": 0.0,
+      "cv_roc_auc": 0.5,
+      "holdout": {
+        "accuracy": 0.5383848454636092,
+        "balanced_accuracy": 0.5,
+        "roc_auc": 0.5,
+        "brier": 0.24852855345416947,
+        "log_loss": 0.6902014103567182
+      },
+      "strategy": {
+        "total_return": 0.0,
+        "annual_return": 0.0,
+        "annual_volatility": 0.0,
+        "sharpe": 0.0,
+        "max_drawdown": 0.0,
+        "exposure": 0.0,
+        "round_trips": 0,
+        "hit_rate": null,
+        "profit_factor": null
+      },
+      "calibration": [
+        {
+          "predicted": 0.5397812033814022,
+          "observed": 0.5383848454636092,
+          "count": 1003
+        }
+      ]
+    }
+  ],
+  "folds": [
+    {
+      "id": "catboost__market",
+      "family": "CatBoost",
+      "features": "Market",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5277777777777778,
+      "balanced_accuracy": 0.5024790236460717,
+      "roc_auc": 0.5062929061784898,
+      "brier": 0.2510440547958953,
+      "log_loss": 0.6954097745992729,
+      "finance_total_return": -0.037756423326108735,
+      "finance_annual_return": -0.037756423326108735,
+      "finance_annual_volatility": 0.05997168832442183,
+      "finance_sharpe": -0.6117917166703067,
+      "finance_max_drawdown": -0.10727476056669549,
+      "finance_exposure": 0.4642857142857143,
+      "finance_round_trips": 117,
+      "finance_hit_rate": 0.5213675213675214,
+      "finance_profit_factor": 0.8579060955683054
+    },
+    {
+      "id": "catboost__market",
+      "family": "CatBoost",
+      "features": "Market",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.549407114624506,
+      "balanced_accuracy": 0.5162045950455654,
+      "roc_auc": 0.46643563085611606,
+      "brier": 0.25409823085677546,
+      "log_loss": 0.7021527182637469,
+      "finance_total_return": -0.033654245471226085,
+      "finance_annual_return": -0.033523479788868826,
+      "finance_annual_volatility": 0.1206969095990342,
+      "finance_sharpe": -0.22249620398734782,
+      "finance_max_drawdown": -0.11560563685051928,
+      "finance_exposure": 0.41106719367588934,
+      "finance_round_trips": 104,
+      "finance_hit_rate": 0.5384615384615384,
+      "finance_profit_factor": 0.9404247769074711
+    },
+    {
+      "id": "catboost__market",
+      "family": "CatBoost",
+      "features": "Market",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5277777777777778,
+      "balanced_accuracy": 0.5007616629641384,
+      "roc_auc": 0.49165344335131705,
+      "brier": 0.2515910126383167,
+      "log_loss": 0.6964264222843685,
+      "finance_total_return": 0.02817620603419435,
+      "finance_annual_return": 0.02817620603419435,
+      "finance_annual_volatility": 0.0706064391316597,
+      "finance_sharpe": 0.42879596170066864,
+      "finance_max_drawdown": -0.04450586945487789,
+      "finance_exposure": 0.5119047619047619,
+      "finance_round_trips": 129,
+      "finance_hit_rate": 0.5193798449612403,
+      "finance_profit_factor": 1.0999948744974057
+    },
+    {
+      "id": "catboost__market_macro",
+      "family": "CatBoost",
+      "features": "Market + macro",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.4880952380952381,
+      "balanced_accuracy": 0.4799771167048055,
+      "roc_auc": 0.4794050343249428,
+      "brier": 0.2541941597449248,
+      "log_loss": 0.701695816007429,
+      "finance_total_return": -0.012077519296063377,
+      "finance_annual_return": -0.012077519296063377,
+      "finance_annual_volatility": 0.04085897640361847,
+      "finance_sharpe": -0.2770267842810471,
+      "finance_max_drawdown": -0.04817683299881903,
+      "finance_exposure": 0.25,
+      "finance_round_trips": 63,
+      "finance_hit_rate": 0.5079365079365079,
+      "finance_profit_factor": 0.9055369957848056
+    },
+    {
+      "id": "catboost__market_macro",
+      "family": "CatBoost",
+      "features": "Market + macro",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.5533596837944664,
+      "balanced_accuracy": 0.5156590938262098,
+      "roc_auc": 0.5037222436144269,
+      "brier": 0.24875423702002583,
+      "log_loss": 0.6908544204832502,
+      "finance_total_return": -0.07743600677481688,
+      "finance_annual_return": -0.07714205755488113,
+      "finance_annual_volatility": 0.10701015885861376,
+      "finance_sharpe": -0.6966095028634447,
+      "finance_max_drawdown": -0.11068077671396392,
+      "finance_exposure": 0.42292490118577075,
+      "finance_round_trips": 107,
+      "finance_hit_rate": 0.5607476635514018,
+      "finance_profit_factor": 0.8357572561744959
+    },
+    {
+      "id": "catboost__market_macro",
+      "family": "CatBoost",
+      "features": "Market + macro",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5158730158730159,
+      "balanced_accuracy": 0.5016820057124722,
+      "roc_auc": 0.5027610282450016,
+      "brier": 0.2512765202494126,
+      "log_loss": 0.6957822092717169,
+      "finance_total_return": -0.026838028179841933,
+      "finance_annual_return": -0.026838028179841933,
+      "finance_annual_volatility": 0.05477849853716854,
+      "finance_sharpe": -0.4692003859223796,
+      "finance_max_drawdown": -0.0837525743913563,
+      "finance_exposure": 0.21825396825396826,
+      "finance_round_trips": 55,
+      "finance_hit_rate": 0.509090909090909,
+      "finance_profit_factor": 0.8549973796773253
+    },
+    {
+      "id": "catboost__market_sentiment",
+      "family": "CatBoost",
+      "features": "Market + sentiment",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5555555555555556,
+      "balanced_accuracy": 0.5324180015255531,
+      "roc_auc": 0.5085176709890669,
+      "brier": 0.2497219770457268,
+      "log_loss": 0.6927223959171492,
+      "finance_total_return": -0.021388589669296243,
+      "finance_annual_return": -0.021388589669296243,
+      "finance_annual_volatility": 0.06104101870285699,
+      "finance_sharpe": -0.3237764317947411,
+      "finance_max_drawdown": -0.09593498177429394,
+      "finance_exposure": 0.48412698412698413,
+      "finance_round_trips": 122,
+      "finance_hit_rate": 0.5245901639344263,
+      "finance_profit_factor": 0.9235854458768487
+    },
+    {
+      "id": "catboost__market_sentiment",
+      "family": "CatBoost",
+      "features": "Market + sentiment",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.4901185770750988,
+      "balanced_accuracy": 0.4783403927608779,
+      "roc_auc": 0.49634193299961493,
+      "brier": 0.252477932417312,
+      "log_loss": 0.6980833387607316,
+      "finance_total_return": -0.021709665908582032,
+      "finance_annual_return": -0.02162479152732366,
+      "finance_annual_volatility": 0.09416291746631854,
+      "finance_sharpe": -0.1851846863772409,
+      "finance_max_drawdown": -0.11083425266981162,
+      "finance_exposure": 0.2845849802371542,
+      "finance_round_trips": 72,
+      "finance_hit_rate": 0.5555555555555556,
+      "finance_profit_factor": 0.9425367621872184
+    },
+    {
+      "id": "catboost__market_sentiment",
+      "family": "CatBoost",
+      "features": "Market + sentiment",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5198412698412699,
+      "balanced_accuracy": 0.4969533481434465,
+      "roc_auc": 0.48917803871786736,
+      "brier": 0.2537043025786292,
+      "log_loss": 0.7007866564203998,
+      "finance_total_return": -0.01872629894924338,
+      "finance_annual_return": -0.01872629894924338,
+      "finance_annual_volatility": 0.06715384174812615,
+      "finance_sharpe": -0.24797477719415356,
+      "finance_max_drawdown": -0.06342132847249882,
+      "finance_exposure": 0.47619047619047616,
+      "finance_round_trips": 120,
+      "finance_hit_rate": 0.5083333333333333,
+      "finance_profit_factor": 0.9444755640152792
+    },
+    {
+      "id": "catboost__full",
+      "family": "CatBoost",
+      "features": "Full",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5119047619047619,
+      "balanced_accuracy": 0.4925629290617849,
+      "roc_auc": 0.49205441139079575,
+      "brier": 0.2527816009194813,
+      "log_loss": 0.6988735493877026,
+      "finance_total_return": -0.045482581392631394,
+      "finance_annual_return": -0.045482581392631394,
+      "finance_annual_volatility": 0.05042474689874133,
+      "finance_sharpe": -0.8978829277548738,
+      "finance_max_drawdown": -0.08406444731921148,
+      "finance_exposure": 0.38095238095238093,
+      "finance_round_trips": 96,
+      "finance_hit_rate": 0.5,
+      "finance_profit_factor": 0.7811551324374147
+    },
+    {
+      "id": "catboost__full",
+      "family": "CatBoost",
+      "features": "Full",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.5059288537549407,
+      "balanced_accuracy": 0.4801052496470286,
+      "roc_auc": 0.484854319086125,
+      "brier": 0.25497360022046905,
+      "log_loss": 0.7036293310223154,
+      "finance_total_return": 0.014302386026724845,
+      "finance_annual_return": 0.014245454102834287,
+      "finance_annual_volatility": 0.11984036019606173,
+      "finance_sharpe": 0.1777300254768842,
+      "finance_max_drawdown": -0.0997152886163023,
+      "finance_exposure": 0.4743083003952569,
+      "finance_round_trips": 120,
+      "finance_hit_rate": 0.5916666666666667,
+      "finance_profit_factor": 1.0454711057027541
+    },
+    {
+      "id": "catboost__full",
+      "family": "CatBoost",
+      "features": "Full",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.503968253968254,
+      "balanced_accuracy": 0.48584576324976203,
+      "roc_auc": 0.4807997461123453,
+      "brier": 0.2514604952921172,
+      "log_loss": 0.6961066572911607,
+      "finance_total_return": 0.0014815389206688234,
+      "finance_annual_return": 0.0014815389206688234,
+      "finance_annual_volatility": 0.05808781223488803,
+      "finance_sharpe": 0.05446719251782215,
+      "finance_max_drawdown": -0.04159835229024311,
+      "finance_exposure": 0.34523809523809523,
+      "finance_round_trips": 87,
+      "finance_hit_rate": 0.4827586206896552,
+      "finance_profit_factor": 1.0144366074765887
+    },
+    {
+      "id": "random_forest__market",
+      "family": "Random Forest",
+      "features": "Market",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5158730158730159,
+      "balanced_accuracy": 0.4855072463768116,
+      "roc_auc": 0.48754131706076786,
+      "brier": 0.24974645257795353,
+      "log_loss": 0.6926567698089793,
+      "finance_total_return": -0.06774366841736101,
+      "finance_annual_return": -0.06774366841736101,
+      "finance_annual_volatility": 0.05370801948629831,
+      "finance_sharpe": -1.2790823742157242,
+      "finance_max_drawdown": -0.11066446610794856,
+      "finance_exposure": 0.4087301587301587,
+      "finance_round_trips": 103,
+      "finance_hit_rate": 0.5048543689320388,
+      "finance_profit_factor": 0.7110503289169507
+    },
+    {
+      "id": "random_forest__market",
+      "family": "Random Forest",
+      "features": "Market",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.5810276679841897,
+      "balanced_accuracy": 0.518418688230009,
+      "roc_auc": 0.5105891413169041,
+      "brier": 0.24556373795702263,
+      "log_loss": 0.6842518374189699,
+      "finance_total_return": -0.054940264415818674,
+      "finance_annual_return": -0.05472916327713773,
+      "finance_annual_volatility": 0.1102766615212049,
+      "finance_sharpe": -0.455251781585777,
+      "finance_max_drawdown": -0.11661195825314286,
+      "finance_exposure": 0.40711462450592883,
+      "finance_round_trips": 103,
+      "finance_hit_rate": 0.5533980582524272,
+      "finance_profit_factor": 0.8770713514241076
+    },
+    {
+      "id": "random_forest__market",
+      "family": "Random Forest",
+      "features": "Market",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5198412698412699,
+      "balanced_accuracy": 0.48787686448746426,
+      "roc_auc": 0.47064423992383375,
+      "brier": 0.2508418260231464,
+      "log_loss": 0.6948611413380938,
+      "finance_total_return": -0.05181810620975824,
+      "finance_annual_return": -0.05181810620975824,
+      "finance_annual_volatility": 0.07319865748696971,
+      "finance_sharpe": -0.6902816609345824,
+      "finance_max_drawdown": -0.06724979534844377,
+      "finance_exposure": 0.5952380952380952,
+      "finance_round_trips": 150,
+      "finance_hit_rate": 0.49333333333333335,
+      "finance_profit_factor": 0.8657243447697676
+    },
+    {
+      "id": "random_forest__market_macro",
+      "family": "Random Forest",
+      "features": "Market + macro",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5158730158730159,
+      "balanced_accuracy": 0.4839816933638444,
+      "roc_auc": 0.479023646071701,
+      "brier": 0.24993582783878288,
+      "log_loss": 0.6930183423516847,
+      "finance_total_return": -0.04942404084852092,
+      "finance_annual_return": -0.04942404084852092,
+      "finance_annual_volatility": 0.03797776855842578,
+      "finance_sharpe": -1.3155535486994065,
+      "finance_max_drawdown": -0.05963450033307138,
+      "finance_exposure": 0.21031746031746032,
+      "finance_round_trips": 53,
+      "finance_hit_rate": 0.49056603773584906,
+      "finance_profit_factor": 0.6097067530873995
+    },
+    {
+      "id": "random_forest__market_macro",
+      "family": "Random Forest",
+      "features": "Market + macro",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.5652173913043478,
+      "balanced_accuracy": 0.5008663842895649,
+      "roc_auc": 0.4948016942626107,
+      "brier": 0.24615505276617144,
+      "log_loss": 0.6854410291348624,
+      "finance_total_return": -0.046025549121166964,
+      "finance_annual_return": -0.04584786562248189,
+      "finance_annual_volatility": 0.08063273630400511,
+      "finance_sharpe": -0.5417640375288746,
+      "finance_max_drawdown": -0.09109364622304372,
+      "finance_exposure": 0.3201581027667984,
+      "finance_round_trips": 81,
+      "finance_hit_rate": 0.5555555555555556,
+      "finance_profit_factor": 0.8547745718261734
+    },
+    {
+      "id": "random_forest__market_macro",
+      "family": "Random Forest",
+      "features": "Market + macro",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5,
+      "balanced_accuracy": 0.4696286893049825,
+      "roc_auc": 0.46531259917486517,
+      "brier": 0.25083722466168196,
+      "log_loss": 0.6948249154703433,
+      "finance_total_return": -0.004272069045848204,
+      "finance_annual_return": -0.004272069045848204,
+      "finance_annual_volatility": 0.05311322951446926,
+      "finance_sharpe": -0.054063236468354155,
+      "finance_max_drawdown": -0.044922272223332005,
+      "finance_exposure": 0.24603174603174602,
+      "finance_round_trips": 62,
+      "finance_hit_rate": 0.5161290322580645,
+      "finance_profit_factor": 0.9827183405634788
+    },
+    {
+      "id": "random_forest__market_sentiment",
+      "family": "Random Forest",
+      "features": "Market + sentiment",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5515873015873016,
+      "balanced_accuracy": 0.5173531655225019,
+      "roc_auc": 0.4931350114416475,
+      "brier": 0.248847239187805,
+      "log_loss": 0.6908615199363541,
+      "finance_total_return": -0.04634793339007737,
+      "finance_annual_return": -0.04634793339007737,
+      "finance_annual_volatility": 0.05019171630835813,
+      "finance_sharpe": -0.9203755359093694,
+      "finance_max_drawdown": -0.08986542831496847,
+      "finance_exposure": 0.43253968253968256,
+      "finance_round_trips": 109,
+      "finance_hit_rate": 0.5045871559633027,
+      "finance_profit_factor": 0.7867998983191972
+    },
+    {
+      "id": "random_forest__market_sentiment",
+      "family": "Random Forest",
+      "features": "Market + sentiment",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.525691699604743,
+      "balanced_accuracy": 0.4892183288409704,
+      "roc_auc": 0.4942241047362341,
+      "brier": 0.24814647632025733,
+      "log_loss": 0.6894147334564363,
+      "finance_total_return": -0.06829004860066357,
+      "finance_annual_return": -0.06802952477564073,
+      "finance_annual_volatility": 0.0648759822668127,
+      "finance_sharpe": -1.0533015787653335,
+      "finance_max_drawdown": -0.10222396388213739,
+      "finance_exposure": 0.20553359683794467,
+      "finance_round_trips": 52,
+      "finance_hit_rate": 0.5576923076923077,
+      "finance_profit_factor": 0.6710067668763521
+    },
+    {
+      "id": "random_forest__market_sentiment",
+      "family": "Random Forest",
+      "features": "Market + sentiment",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5079365079365079,
+      "balanced_accuracy": 0.4769279593779752,
+      "roc_auc": 0.48111710568073623,
+      "brier": 0.2507825931342103,
+      "log_loss": 0.6947395436988631,
+      "finance_total_return": 0.006216023043607466,
+      "finance_annual_return": 0.006216023043607466,
+      "finance_annual_volatility": 0.06570460503540711,
+      "finance_sharpe": 0.12710105880574818,
+      "finance_max_drawdown": -0.048607124427930026,
+      "finance_exposure": 0.44841269841269843,
+      "finance_round_trips": 113,
+      "finance_hit_rate": 0.5132743362831859,
+      "finance_profit_factor": 1.0305586615944342
+    },
+    {
+      "id": "random_forest__full",
+      "family": "Random Forest",
+      "features": "Full",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5277777777777778,
+      "balanced_accuracy": 0.5009534706331045,
+      "roc_auc": 0.4941520467836258,
+      "brier": 0.24953389047179697,
+      "log_loss": 0.6922226728005034,
+      "finance_total_return": -0.025063457185310667,
+      "finance_annual_return": -0.025063457185310667,
+      "finance_annual_volatility": 0.026385777920493698,
+      "finance_sharpe": -0.9487689950553082,
+      "finance_max_drawdown": -0.04255756266150279,
+      "finance_exposure": 0.19047619047619047,
+      "finance_round_trips": 48,
+      "finance_hit_rate": 0.5,
+      "finance_profit_factor": 0.7022604257101812
+    },
+    {
+      "id": "random_forest__full",
+      "family": "Random Forest",
+      "features": "Full",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.525691699604743,
+      "balanced_accuracy": 0.48000898472596587,
+      "roc_auc": 0.5001283532280836,
+      "brier": 0.24773463015465388,
+      "log_loss": 0.688589561380151,
+      "finance_total_return": -0.03874401236278868,
+      "finance_annual_return": -0.03859386791958763,
+      "finance_annual_volatility": 0.06534058337505552,
+      "finance_sharpe": -0.5695360393833119,
+      "finance_max_drawdown": -0.07256109613257655,
+      "finance_exposure": 0.23715415019762845,
+      "finance_round_trips": 60,
+      "finance_hit_rate": 0.5666666666666667,
+      "finance_profit_factor": 0.8165368137500635
+    },
+    {
+      "id": "random_forest__full",
+      "family": "Random Forest",
+      "features": "Full",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5079365079365079,
+      "balanced_accuracy": 0.47622976832751507,
+      "roc_auc": 0.4775626785147572,
+      "brier": 0.2505617040124279,
+      "log_loss": 0.6942748472783821,
+      "finance_total_return": -0.04075288693243817,
+      "finance_annual_return": -0.04075288693243817,
+      "finance_annual_volatility": 0.061108083857622376,
+      "finance_sharpe": -0.6502797552202537,
+      "finance_max_drawdown": -0.050046465977457655,
+      "finance_exposure": 0.31746031746031744,
+      "finance_round_trips": 80,
+      "finance_hit_rate": 0.5125,
+      "finance_profit_factor": 0.8362595124134362
+    },
+    {
+      "id": "logistic__full",
+      "family": "Logistic",
+      "features": "Full",
+      "year": 2019,
+      "train_start": "2006-01-04",
+      "train_end": "2018-12-21",
+      "validation_start": "2019-01-02",
+      "validation_end": "2019-12-31",
+      "training_rows": 3265,
+      "validation_rows": 252,
+      "accuracy": 0.5238095238095238,
+      "balanced_accuracy": 0.5324180015255531,
+      "roc_auc": 0.5209763539282991,
+      "brier": 0.25182772447781876,
+      "log_loss": 0.6968527867838031,
+      "finance_total_return": -0.012847460813416478,
+      "finance_annual_return": -0.012847460813416478,
+      "finance_annual_volatility": 0.019877542720862142,
+      "finance_sharpe": -0.6405613371070653,
+      "finance_max_drawdown": -0.022312100990730666,
+      "finance_exposure": 0.07936507936507936,
+      "finance_round_trips": 20,
+      "finance_hit_rate": 0.55,
+      "finance_profit_factor": 0.6834254064107962
+    },
+    {
+      "id": "logistic__full",
+      "family": "Logistic",
+      "features": "Full",
+      "year": 2020,
+      "train_start": "2006-01-04",
+      "train_end": "2019-12-23",
+      "validation_start": "2020-01-02",
+      "validation_end": "2020-12-31",
+      "training_rows": 3517,
+      "validation_rows": 253,
+      "accuracy": 0.5098814229249012,
+      "balanced_accuracy": 0.5203439866512642,
+      "roc_auc": 0.5295854190732897,
+      "brier": 0.2722983483137389,
+      "log_loss": 0.7584834006757355,
+      "finance_total_return": 0.030897228577885016,
+      "finance_annual_return": 0.030773245099052104,
+      "finance_annual_volatility": 0.07832008606162995,
+      "finance_sharpe": 0.42610173514622507,
+      "finance_max_drawdown": -0.052281012898106494,
+      "finance_exposure": 0.2885375494071146,
+      "finance_round_trips": 73,
+      "finance_hit_rate": 0.6301369863013698,
+      "finance_profit_factor": 1.1423190149249964
+    },
+    {
+      "id": "logistic__full",
+      "family": "Logistic",
+      "features": "Full",
+      "year": 2021,
+      "train_start": "2006-01-04",
+      "train_end": "2020-12-23",
+      "validation_start": "2021-01-04",
+      "validation_end": "2021-12-31",
+      "training_rows": 3770,
+      "validation_rows": 252,
+      "accuracy": 0.5079365079365079,
+      "balanced_accuracy": 0.49158997143763883,
+      "roc_auc": 0.5057442081878769,
+      "brier": 0.2496567934059217,
+      "log_loss": 0.6924450953580837,
+      "finance_total_return": 0.026067396452293945,
+      "finance_annual_return": 0.026067396452293945,
+      "finance_annual_volatility": 0.046166417832353326,
+      "finance_sharpe": 0.5804417985990528,
+      "finance_max_drawdown": -0.03955704943919591,
+      "finance_exposure": 0.19444444444444445,
+      "finance_round_trips": 49,
+      "finance_hit_rate": 0.5510204081632653,
+      "finance_profit_factor": 1.230835813363272
+    }
+  ],
+  "feature_importance": [
+    {
+      "model": "catboost__market",
+      "feature": "return_1d",
+      "importance": 0.07965752323578477
+    },
+    {
+      "model": "catboost__market",
+      "feature": "return_5d",
+      "importance": 0.07484051459043982
+    },
+    {
+      "model": "catboost__market",
+      "feature": "return_20d",
+      "importance": 0.10919467892326377
+    },
+    {
+      "model": "catboost__market",
+      "feature": "volatility_20d",
+      "importance": 0.09414965865338358
+    },
+    {
+      "model": "catboost__market",
+      "feature": "distance_sma50",
+      "importance": 0.09690728730617659
+    },
+    {
+      "model": "catboost__market",
+      "feature": "distance_sma200",
+      "importance": 0.09233638975578307
+    },
+    {
+      "model": "catboost__market",
+      "feature": "intraday_return",
+      "importance": 0.10367603304978991
+    },
+    {
+      "model": "catboost__market",
+      "feature": "overnight_return",
+      "importance": 0.09252804894637626
+    },
+    {
+      "model": "catboost__market",
+      "feature": "high_low_range",
+      "importance": 0.1338747176024046
+    },
+    {
+      "model": "catboost__market",
+      "feature": "volume_z20",
+      "importance": 0.12283514793659768
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "return_1d",
+      "importance": 0.0430276170870749
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "return_5d",
+      "importance": 0.03760964368955445
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "return_20d",
+      "importance": 0.059544800446131134
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "volatility_20d",
+      "importance": 0.0398828327678189
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "distance_sma50",
+      "importance": 0.06509011270850829
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "distance_sma200",
+      "importance": 0.05171867031188533
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "intraday_return",
+      "importance": 0.05942633825024016
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "overnight_return",
+      "importance": 0.0858312487438894
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "high_low_range",
+      "importance": 0.0896612574423006
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "volume_z20",
+      "importance": 0.05956740654868265
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "fed_funds",
+      "importance": 0.0290296790571333
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "yield_curve",
+      "importance": 0.05228984426844763
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "vix",
+      "importance": 0.04919433705326704
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "unemployment",
+      "importance": 0.033420677619109405
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "inflation_yoy",
+      "importance": 0.06732427103185022
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "fed_funds_change20",
+      "importance": 0.03449193742653417
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "yield_curve_change20",
+      "importance": 0.051464986615947395
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "vix_change5",
+      "importance": 0.06884318057497243
+    },
+    {
+      "model": "catboost__market_macro",
+      "feature": "unemployment_change60",
+      "importance": 0.02258115835665261
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "return_1d",
+      "importance": 0.06224651593491644
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "return_5d",
+      "importance": 0.05076384376102252
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "return_20d",
+      "importance": 0.06983216272862075
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "volatility_20d",
+      "importance": 0.06525477926528495
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "distance_sma50",
+      "importance": 0.06810830892216528
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "distance_sma200",
+      "importance": 0.06823512090219978
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "intraday_return",
+      "importance": 0.0566796813699075
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "overnight_return",
+      "importance": 0.06518501576431338
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "high_low_range",
+      "importance": 0.08064308106385704
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "volume_z20",
+      "importance": 0.09803854860166934
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "news_sentiment",
+      "importance": 0.052288213207203345
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "sentiment_mean5",
+      "importance": 0.04976217050532106
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "sentiment_mean20",
+      "importance": 0.05405179855381884
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "sentiment_change5",
+      "importance": 0.0971931423428182
+    },
+    {
+      "model": "catboost__market_sentiment",
+      "feature": "sentiment_z60",
+      "importance": 0.06171761707688151
+    },
+    {
+      "model": "catboost__full",
+      "feature": "return_1d",
+      "importance": 0.03358355545510457
+    },
+    {
+      "model": "catboost__full",
+      "feature": "return_5d",
+      "importance": 0.03687486879372374
+    },
+    {
+      "model": "catboost__full",
+      "feature": "return_20d",
+      "importance": 0.040252100528843184
+    },
+    {
+      "model": "catboost__full",
+      "feature": "volatility_20d",
+      "importance": 0.04326003044802548
+    },
+    {
+      "model": "catboost__full",
+      "feature": "distance_sma50",
+      "importance": 0.04836048847310341
+    },
+    {
+      "model": "catboost__full",
+      "feature": "distance_sma200",
+      "importance": 0.051725868091476286
+    },
+    {
+      "model": "catboost__full",
+      "feature": "intraday_return",
+      "importance": 0.04354723995678276
+    },
+    {
+      "model": "catboost__full",
+      "feature": "overnight_return",
+      "importance": 0.05766400966664459
+    },
+    {
+      "model": "catboost__full",
+      "feature": "high_low_range",
+      "importance": 0.06790417858661876
+    },
+    {
+      "model": "catboost__full",
+      "feature": "volume_z20",
+      "importance": 0.04761571029688319
+    },
+    {
+      "model": "catboost__full",
+      "feature": "fed_funds",
+      "importance": 0.028950125789769215
+    },
+    {
+      "model": "catboost__full",
+      "feature": "yield_curve",
+      "importance": 0.04600264487992666
+    },
+    {
+      "model": "catboost__full",
+      "feature": "vix",
+      "importance": 0.041915594586965754
+    },
+    {
+      "model": "catboost__full",
+      "feature": "unemployment",
+      "importance": 0.016648715106737922
+    },
+    {
+      "model": "catboost__full",
+      "feature": "inflation_yoy",
+      "importance": 0.04231010942110227
+    },
+    {
+      "model": "catboost__full",
+      "feature": "fed_funds_change20",
+      "importance": 0.030803400299416517
+    },
+    {
+      "model": "catboost__full",
+      "feature": "yield_curve_change20",
+      "importance": 0.03932038622865731
+    },
+    {
+      "model": "catboost__full",
+      "feature": "vix_change5",
+      "importance": 0.054094664198663295
+    },
+    {
+      "model": "catboost__full",
+      "feature": "unemployment_change60",
+      "importance": 0.018026879021769703
+    },
+    {
+      "model": "catboost__full",
+      "feature": "news_sentiment",
+      "importance": 0.025609462664059675
+    },
+    {
+      "model": "catboost__full",
+      "feature": "sentiment_mean5",
+      "importance": 0.03283496745725752
+    },
+    {
+      "model": "catboost__full",
+      "feature": "sentiment_mean20",
+      "importance": 0.024873624357473423
+    },
+    {
+      "model": "catboost__full",
+      "feature": "sentiment_change5",
+      "importance": 0.07781775479544137
+    },
+    {
+      "model": "catboost__full",
+      "feature": "sentiment_z60",
+      "importance": 0.050003620895553436
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "return_1d",
+      "importance": 0.08296667391443531
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "return_5d",
+      "importance": 0.0854938334140734
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "return_20d",
+      "importance": 0.0963210967238169
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "volatility_20d",
+      "importance": 0.09595987354065669
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "distance_sma50",
+      "importance": 0.07917353023676818
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "distance_sma200",
+      "importance": 0.08491873228415503
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "intraday_return",
+      "importance": 0.08920367908270471
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "overnight_return",
+      "importance": 0.1290754836569838
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "high_low_range",
+      "importance": 0.14394333497515005
+    },
+    {
+      "model": "random_forest__market",
+      "feature": "volume_z20",
+      "importance": 0.11294376217125592
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "return_1d",
+      "importance": 0.04575831740187253
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "return_5d",
+      "importance": 0.05116550983940388
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "return_20d",
+      "importance": 0.06369853094406479
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "volatility_20d",
+      "importance": 0.05527089736493473
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "distance_sma50",
+      "importance": 0.05094679387007536
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "distance_sma200",
+      "importance": 0.05668063890886444
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "intraday_return",
+      "importance": 0.05773217822614824
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "overnight_return",
+      "importance": 0.07982992776366021
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "high_low_range",
+      "importance": 0.0868131402219737
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "volume_z20",
+      "importance": 0.06885605607416456
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "fed_funds",
+      "importance": 0.03509626278407328
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "yield_curve",
+      "importance": 0.052711140420934964
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "vix",
+      "importance": 0.04963965385921103
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "unemployment",
+      "importance": 0.034466641315086685
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "inflation_yoy",
+      "importance": 0.05479082296408545
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "fed_funds_change20",
+      "importance": 0.0317973984256988
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "yield_curve_change20",
+      "importance": 0.04679586769768859
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "vix_change5",
+      "importance": 0.05874733633228534
+    },
+    {
+      "model": "random_forest__market_macro",
+      "feature": "unemployment_change60",
+      "importance": 0.019202885585773474
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "return_1d",
+      "importance": 0.05609887665391051
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "return_5d",
+      "importance": 0.050959066294408724
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "return_20d",
+      "importance": 0.062163755582984606
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "volatility_20d",
+      "importance": 0.0539839097690475
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "distance_sma50",
+      "importance": 0.054387383584959315
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "distance_sma200",
+      "importance": 0.06478474973795853
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "intraday_return",
+      "importance": 0.06551272584003502
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "overnight_return",
+      "importance": 0.07676960808948251
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "high_low_range",
+      "importance": 0.09558218603262192
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "volume_z20",
+      "importance": 0.07134194712406472
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "news_sentiment",
+      "importance": 0.06280005555331311
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "sentiment_mean5",
+      "importance": 0.05546716075782155
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "sentiment_mean20",
+      "importance": 0.05573107553004071
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "sentiment_change5",
+      "importance": 0.09530048690491025
+    },
+    {
+      "model": "random_forest__market_sentiment",
+      "feature": "sentiment_z60",
+      "importance": 0.07911701254444105
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "return_1d",
+      "importance": 0.03347848084840588
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "return_5d",
+      "importance": 0.03792606166103431
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "return_20d",
+      "importance": 0.043493455061599746
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "volatility_20d",
+      "importance": 0.04267138641182966
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "distance_sma50",
+      "importance": 0.032845829194426586
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "distance_sma200",
+      "importance": 0.046785421546520704
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "intraday_return",
+      "importance": 0.04311342297251076
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "overnight_return",
+      "importance": 0.053245323197438146
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "high_low_range",
+      "importance": 0.07269875037229231
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "volume_z20",
+      "importance": 0.04854962247680194
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "fed_funds",
+      "importance": 0.02638862818670838
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "yield_curve",
+      "importance": 0.043329487321712594
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "vix",
+      "importance": 0.03954823677976156
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "unemployment",
+      "importance": 0.0238785111576904
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "inflation_yoy",
+      "importance": 0.040591744388093536
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "fed_funds_change20",
+      "importance": 0.029459715549321898
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "yield_curve_change20",
+      "importance": 0.028411651741080485
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "vix_change5",
+      "importance": 0.04028315720243745
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "unemployment_change60",
+      "importance": 0.01502752865858319
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "news_sentiment",
+      "importance": 0.040079798897062494
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "sentiment_mean5",
+      "importance": 0.03864837282656322
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "sentiment_mean20",
+      "importance": 0.04473413120268417
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "sentiment_change5",
+      "importance": 0.07813440931863692
+    },
+    {
+      "model": "random_forest__full",
+      "feature": "sentiment_z60",
+      "importance": 0.056676873026803666
+    },
+    {
+      "model": "logistic__full",
+      "feature": "return_1d",
+      "importance": 0.04261057384203687
+    },
+    {
+      "model": "logistic__full",
+      "feature": "return_5d",
+      "importance": 0.03495899999034624
+    },
+    {
+      "model": "logistic__full",
+      "feature": "return_20d",
+      "importance": 0.012326701301471031
+    },
+    {
+      "model": "logistic__full",
+      "feature": "volatility_20d",
+      "importance": 0.0037460219013555752
+    },
+    {
+      "model": "logistic__full",
+      "feature": "distance_sma50",
+      "importance": 0.036139579706354154
+    },
+    {
+      "model": "logistic__full",
+      "feature": "distance_sma200",
+      "importance": 0.03963947032585723
+    },
+    {
+      "model": "logistic__full",
+      "feature": "intraday_return",
+      "importance": 0.022747371841865878
+    },
+    {
+      "model": "logistic__full",
+      "feature": "overnight_return",
+      "importance": 0.04538470210543358
+    },
+    {
+      "model": "logistic__full",
+      "feature": "high_low_range",
+      "importance": 0.05377761487856269
+    },
+    {
+      "model": "logistic__full",
+      "feature": "volume_z20",
+      "importance": 0.010122941536196882
+    },
+    {
+      "model": "logistic__full",
+      "feature": "fed_funds",
+      "importance": 0.06612664223946749
+    },
+    {
+      "model": "logistic__full",
+      "feature": "yield_curve",
+      "importance": 0.12233441333123996
+    },
+    {
+      "model": "logistic__full",
+      "feature": "vix",
+      "importance": 0.06811354929678999
+    },
+    {
+      "model": "logistic__full",
+      "feature": "unemployment",
+      "importance": 0.1452571645434719
+    },
+    {
+      "model": "logistic__full",
+      "feature": "inflation_yoy",
+      "importance": 0.034151155164572386
+    },
+    {
+      "model": "logistic__full",
+      "feature": "fed_funds_change20",
+      "importance": 0.010050334501630447
+    },
+    {
+      "model": "logistic__full",
+      "feature": "yield_curve_change20",
+      "importance": 0.016558245932579378
+    },
+    {
+      "model": "logistic__full",
+      "feature": "vix_change5",
+      "importance": 0.0007655172144618058
+    },
+    {
+      "model": "logistic__full",
+      "feature": "unemployment_change60",
+      "importance": 0.01172106590922736
+    },
+    {
+      "model": "logistic__full",
+      "feature": "news_sentiment",
+      "importance": 0.09118012593048239
+    },
+    {
+      "model": "logistic__full",
+      "feature": "sentiment_mean5",
+      "importance": 0.013602775420768674
+    },
+    {
+      "model": "logistic__full",
+      "feature": "sentiment_mean20",
+      "importance": 0.01867803066476927
+    },
+    {
+      "model": "logistic__full",
+      "feature": "sentiment_change5",
+      "importance": 0.09478554054642548
+    },
+    {
+      "model": "logistic__full",
+      "feature": "sentiment_z60",
+      "importance": 0.00522146187463337
+    }
+  ],
+  "benchmarks": {
+    "always_long_intraday": {
+      "total_return": -0.17433157610868433,
+      "annual_return": -0.04698938681253273,
+      "annual_volatility": 0.15220168064557216,
+      "sharpe": -0.24071615056934537,
+      "max_drawdown": -0.24435208319377044,
+      "exposure": 1.0,
+      "round_trips": 1003,
+      "hit_rate": 0.514456630109671,
+      "profit_factor": 0.9566428043900967
+    },
+    "buy_and_hold_close_to_close": {
+      "total_return": 0.5172192635619326,
+      "annual_return": 0.11042113836076384,
+      "annual_volatility": 0.18006195273379322,
+      "sharpe": 0.6715224396909616,
+      "max_drawdown": -0.24496395660775794,
+      "exposure": 1.0,
+      "round_trips": 1,
+      "hit_rate": 0.5383848454636092,
+      "profit_factor": 1.1283598588835995
+    }
+  },
+  "bootstrap": {
+    "annual_mean_excess": 0.06847597287089123,
+    "lower_95": -0.044947179347407946,
+    "upper_95": 0.18922421785533408,
+    "block_sessions": 20,
+    "repetitions": 1000
+  },
+  "data": {
+    "snapshot_start": "2004-01-01",
+    "snapshot_end": "2025-12-31",
+    "sources": [
+      {
+        "name": "SPY OHLCV and adjusted close",
+        "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1072915200&period2=1767225600&interval=1d",
+        "retrieved_at_utc": "2026-11-14T06:53:14.480922+00:00",
+        "response_sha256": "f34c06e4e546cb325e5f827331a8ddbe5f24044f35191e4e6da4888a6f11f0fe"
+      },
+      {
+        "name": "DFF",
+        "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF&cosd=2004-01-01&coed=2025-12-31",
+        "retrieved_at_utc": "2026-11-14T06:53:16.830048+00:00",
+        "response_sha256": "bfdfcba491bffa1512c1c02124c889f6dd649134172ba84cf38124516c4ff17f"
+      },
+      {
+        "name": "T10Y2Y",
+        "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10Y2Y&cosd=2004-01-01&coed=2025-12-31",
+        "retrieved_at_utc": "2026-11-14T06:53:18.322539+00:00",
+        "response_sha256": "5a7788ef0dd95443422d4c2c6567e75e33222e062825e954c056758cbfb8d4e0"
+      },
+      {
+        "name": "VIXCLS",
+        "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2004-01-01&coed=2025-12-31",
+        "retrieved_at_utc": "2026-11-14T06:53:19.645970+00:00",
+        "response_sha256": "d14445d93a5696f85960ac39a29473da787d18a7ad0fb8b8104ef568cc588d96"
+      },
+      {
+        "name": "UNRATE",
+        "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2004-01-01&coed=2025-12-31",
+        "retrieved_at_utc": "2026-11-14T06:53:20.137649+00:00",
+        "response_sha256": "36dd9594874a578a119d4120ba4cfbbd02e3a4ca6f875919547a1f866ef6f4a9"
+      },
+      {
+        "name": "CPIAUCSL",
+        "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL&cosd=2004-01-01&coed=2025-12-31",
+        "retrieved_at_utc": "2026-11-14T06:53:20.650845+00:00",
+        "response_sha256": "1560f0e59abaefc8dd0a1bcb4bfae16faa8da35631e3e3df9d751e61553dbe39"
+      },
+      {
+        "name": "FRBSF Daily News Sentiment Index",
+        "url": "https://www.frbsf.org/wp-content/uploads/news_sentiment_data.xlsx",
+        "retrieved_at_utc": "2026-11-14T06:53:21.056331+00:00",
+        "response_sha256": "afc0e1f42222296fd568c4ed4f6e6f73ea53294fccb47a2288137afae8f4932a"
+      }
+    ],
+    "files": {
+      "prices.csv": {
+        "sha256": "99b05853d06b8ca51b732c3cabf1dc1e4fbb37430d27ba3c28ebda15fd4f3604",
+        "rows": 5535
+      },
+      "macro.csv": {
+        "sha256": "d83d2abb0c36a630bda849ba4f7e52292493354ea775e77f189dbe7bdf8baabe",
+        "rows": 19628
+      },
+      "sentiment.csv": {
+        "sha256": "21b11a976cbe060243e1969c6f68284d62bff4f14003d2d578c2c936939250ab",
+        "rows": 8036
+      }
+    },
+    "vintage": "Latest downloaded revisions, not point-in-time vintages. Availability lags are assumptions, not verified historical publication timestamps."
+  },
+  "environment": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "pandas": "2.2.3",
+    "sklearn": "1.8.0",
+    "catboost": "1.2.10"
+  },
+  "coverage": {
+    "feature_rows": 5030,
+    "features": 24,
+    "first_signal": "2006-01-03",
+    "last_signal": "2025-12-30"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "snapshot_start": "2004-01-01",
+  "snapshot_end": "2026-10-30",
+  "sources": [
+    {
+      "name": "SPY OHLCV and adjusted close",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/SPY?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:27.645561+00:00",
+      "response_sha256": "323af49e1e69329585dd58bc5cb024f5796d353198cd9a33921b2382191e8ab7"
+    },
+    {
+      "name": "DFF",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFF&cosd=2004-01-01&coed=2026-10-30",
+      "retrieved_at_utc": "2026-11-14T06:58:29.859632+00:00",
+      "response_sha256": "e4139f9316f9a84c8e0e87677b3a1b0fbdfdcaf1cd317d1dbd5742a6ce69c64f"
+    },
+    {
+      "name": "T10Y2Y",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=T10Y2Y&cosd=2004-01-01&coed=2026-10-30",
+      "retrieved_at_utc": "2026-11-14T06:58:31.404088+00:00",
+      "response_sha256": "5858fa1048f3091961a8c2726a7b001693f7696741f88cbe1e945864969fd50f"
+    },
+    {
+      "name": "VIXCLS",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=VIXCLS&cosd=2004-01-01&coed=2026-10-30",
+      "retrieved_at_utc": "2026-11-14T06:58:32.755361+00:00",
+      "response_sha256": "713f80a332092f0ca8034f87dbde95693d5187b219cba6b39be378d7a2affa72"
+    },
+    {
+      "name": "UNRATE",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=UNRATE&cosd=2004-01-01&coed=2026-10-30",
+      "retrieved_at_utc": "2026-11-14T06:58:33.537354+00:00",
+      "response_sha256": "e89b6a0f12c66cf3b8454d5d0e86e0fc9aa0ed505e4719469dd8f57e0bb5048f"
+    },
+    {
+      "name": "CPIAUCSL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL&cosd=2004-01-01&coed=2026-10-30",
+      "retrieved_at_utc": "2026-11-14T06:58:34.135151+00:00",
+      "response_sha256": "fc7d914add6414ba004046f05c98fc3712b934c104f1068575be5865485d25a1"
+    },
+    {
+      "name": "FRBSF Daily News Sentiment Index",
+      "url": "https://www.frbsf.org/wp-content/uploads/news_sentiment_data.xlsx",
+      "retrieved_at_utc": "2026-11-14T06:58:34.447831+00:00",
+      "response_sha256": "afc0e1f42222296fd568c4ed4f6e6f73ea53294fccb47a2288137afae8f4932a"
+    },
+    {
+      "name": "QQQ",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/QQQ?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:35.430627+00:00",
+      "response_sha256": "836f61b033ccb8c5deac053a11472ad4c6dc52106dd71fffcd5cb951e56b920d"
+    },
+    {
+      "name": "IWM",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/IWM?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:35.764415+00:00",
+      "response_sha256": "ad645a8ede4f008b3d43f8ebe2178d76541737a595c1dc209f7d6e67a8f8226e"
+    },
+    {
+      "name": "TLT",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/TLT?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:36.062451+00:00",
+      "response_sha256": "ac1a56ba6fb6c534c7850a9744320f08ee4c06af6bc5ff7bec2418afcc4a6704"
+    },
+    {
+      "name": "HYG",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/HYG?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:36.373355+00:00",
+      "response_sha256": "4731d5fd64ef5c5dba97e8793a429f2ffe3a4b4bfe5b909f63b612b2c0758a72"
+    },
+    {
+      "name": "GLD",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/GLD?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:36.740449+00:00",
+      "response_sha256": "4706b0d514502d77d705c7097f861ed559509c50e0489facaa099d5dd1b0616e"
+    },
+    {
+      "name": "UUP",
+      "url": "https://query1.finance.yahoo.com/v8/finance/chart/UUP?period1=1072915200&period2=1793404800&interval=1d",
+      "retrieved_at_utc": "2026-11-14T06:58:37.085017+00:00",
+      "response_sha256": "59c0b2ee7c494db19142b786c144b4da74453c688a6d65da0ebf1acbcc8284bb"
+    }
+  ],
+  "files": {
+    "prices.csv": {
+      "sha256": "774f0ef4899dba1c6d22507a778a5686451b5bb4f286f94baaf70007ece66807",
+      "rows": 5744
+    },
+    "macro.csv": {
+      "sha256": "393045e08009702a71a885857c32e41b8fadea9bd397cab770ae220c7f8fb015",
+      "rows": 20375
+    },
+    "sentiment.csv": {
+      "sha256": "923cf42d7f46561c0597ad59713b52bbaf5cf817b6b8bb6b9b63127a83673a1f",
+      "rows": 8339
+    },
+    "cross_assets.csv": {
+      "sha256": "4da7d569ba215ec91232683709b25675872bb00b8bd27a65ca1b41c14d616045",
+      "rows": 32626
+    }
+  },
+  "vintage": "Latest downloaded revisions, not point-in-time vintages. Availability lags are assumptions, not verified historical publication timestamps."
+}
