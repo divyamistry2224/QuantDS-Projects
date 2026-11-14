@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Divya Mistry's reproducible market direction research: sentiment, macroeconomic signals, CatBoost, Random Forest and chronological evaluation.">
+  <meta name="theme-color" content="#102c34">
+  <title>Market Direction Research · Divya Mistry</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="stylesheet" href="assets/style.css">
+  <script src="assets/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to research</a>
+<header class="topbar">
+  <a class="brand" href="#overview" aria-label="Market Direction Research home"><span class="brand-symbol"><svg viewBox="0 0 28 28" width="25" height="25" aria-hidden="true"><path d="M4 22l7-8 5 3 8-12m-7 0h7v7" fill="none" stroke="currentColor" stroke-width="1.8"/></svg></span><span>MARKET DIRECTION<span class="brand-sub">RESEARCH NOTEBOOK / 01</span></span></a>
+  <div class="top-links"><span class="author">Divya Mistry · Quantitative research</span><a class="source-link" href="https://github.com/divyamistry2224/QuantDS-Projects/tree/main/market-direction-prediction" target="_blank" rel="noopener">View GitHub <span aria-hidden="true">→</span></a></div>
+</header>
+<div class="workspace">
+  <aside class="sidebar">
+    <p class="nav-label">RESEARCH WORKSPACE</p>
+    <nav aria-label="Research sections">
+      <button data-tab="overview" aria-current="page"><span>01</span> Research overview</button>
+      <button data-tab="lab"><span>02</span> Strategy lab</button>
+      <button data-tab="validation"><span>03</span> Model validation</button>
+      <button data-tab="data"><span>04</span> Data & methodology</button>
+    </nav>
+    <div class="universe"><span class="nav-label">RESEARCH UNIVERSE</span><strong>SPY</strong><p>S&P 500 ETF</p><dl><div><dt>Frequency</dt><dd>Daily</dd></div><div><dt>Decision</dt><dd>After close</dd></div><div><dt>Execution</dt><dd>Next open → close</dd></div><div><dt>Exposure</dt><dd>Long / cash</dd></div></dl></div>
+    <div class="sidebar-note"><span class="status-dot"></span> Reproducible historical study<p>Public-source snapshots. Real experiment outputs. No live trading connection.</p></div>
+  </aside>
+  <main id="main">
+    <div id="loading" role="status">Loading research artifacts…</div>
+    <div id="error" role="alert" hidden></div>
+    <div id="research" hidden>
+      <section class="hero">
+        <div><p class="eyebrow">EQUITIES / SENTIMENT / MACROECONOMICS</p><h1>Market direction,<br>measured out of sample.</h1><p class="hero-copy">Do economic conditions and news sentiment add information beyond price? A reproducible comparison of CatBoost, Random Forest and simpler baselines, with explicit timing and trading costs.</p><div class="hero-tags"><span>Public financial data</span><span>Chronological validation</span><span>Cost-aware evaluation</span></div></div>
+        <div class="research-id"><span class="eyebrow">RESEARCH BY</span><strong>Divya Mistry</strong><p>Financial machine learning<br>Signal research & model risk</p><a href="research/market_research_note.pdf" download>Download research note (PDF) ↓</a></div>
+      </section>
+      <section id="overview" class="tab-panel" aria-label="Research overview">
+        <div class="section-heading"><div><p class="eyebrow">THE RESULT, BEFORE THE NARRATIVE</p><h2>What the evidence says</h2></div><span class="pill" id="overview-period"></span></div>
+        <div id="overview-kpis" class="kpis"></div>
+        <div id="finding" class="finding"></div>
+        <div class="grid-main"><section class="card"><div class="card-heading"><div><h3>Growth of $100</h3><p>2022–2025 · validation-selected model · net of assumed costs</p></div><span class="chart-unit">USD</span></div><div id="overview-chart" class="chart"></div><div class="legend"><span><i class="line strategy"></i>Selected long/cash</span><span><i class="line intraday"></i>Always-long intraday</span><span><i class="line benchmark"></i>Buy & hold</span></div><p class="footnote">Buy & hold includes overnight exposure; the model strategy does not. Both baselines include their respective entry/exit costs.</p></section><section class="card summary-card"><p class="eyebrow">RESEARCH DESIGN</p><h3>Predict first.<br> Trade second.</h3><ol><li><b>Build signals</b><span>Price behavior, news sentiment and macro conditions.</span></li><li><b>Respect time</b><span>Lag external series and purge five sessions between splits.</span></li><li><b>Compare fairly</b><span>Expanding validation, feature ablations and fixed baselines.</span></li><li><b>Measure implementation</b><span>Next-session execution, costs, exposure and drawdowns.</span></li></ol><button class="text-link" data-go="data">Read the full methodology →</button></section></div>
+        <div class="two-columns"><section class="card"><div class="card-heading"><div><h3>Research progression</h3><p>The first test remains visible, including its weak result.</p></div></div><div id="progression"></div></section><section class="card"><div class="card-heading"><div><h3>Where this fits in finance</h3><p>Research and risk decisions supported by the project.</p></div></div><div class="use-cases"><div><b>Systematic equity research</b><p>Test incremental signals before allocating research capital.</p></div><div><b>Portfolio & risk analytics</b><p>Separate direction, exposure, drawdown and cost sensitivity.</p></div><div><b>Model validation</b><p>Audit label timing, validation choices and degradation across periods.</p></div></div></section></div>
+      </section>
+      <section id="lab" class="tab-panel" aria-label="Strategy lab" hidden>
+        <div class="section-heading"><div><p class="eyebrow">EXPLORE THE IMPLEMENTATION</p><h2>Strategy lab</h2></div><a class="button secondary" href="data/predictions.csv" download>Download original predictions ↓</a></div>
+        <p class="section-copy">Explore how model choice, confidence and transaction costs change a historical long/cash strategy. Changing these settings is post-hoc analysis, not a new independent test.</p>
+        <div class="controls card"><label>Evaluation sample<select id="dataset"><option value="original">Historical backtest · 2022–2025</option><option value="extension">Fresh evaluation · 2026</option></select></label><label>Model<select id="model"></select></label><label>Period<select id="period"><option value="all">Full evaluation sample</option></select></label><label>Trade threshold <output id="threshold-value"></output><input id="threshold" type="range" min="0.45" max="0.75" step="0.01" value="0.55"></label><label>Cost per side <output id="cost-value"></output><input id="cost" type="range" min="0" max="20" step="0.5" value="2"></label></div>
+        <div id="lab-kpis" class="kpis" aria-live="polite"></div>
+        <section class="card"><div class="card-heading"><div><h3>Equity curve</h3><p id="lab-caption"></p></div><button class="text-link" id="reset">Reset research settings ↺</button></div><div id="lab-chart" class="chart"></div><div class="legend"><span><i class="line strategy"></i>Long/cash</span><span><i class="line intraday"></i>Always-long intraday</span><span><i class="line benchmark"></i>Buy & hold</span></div><p class="footnote">Every active day is a separate open-to-close round trip. Consecutive active days each incur both costs. Cash earns zero; no leverage or short selling.</p></section>
+        <div class="two-columns"><section class="card"><div class="card-heading"><div><h3>Monthly net returns</h3><p>Compounded within each month · gray cells are outside the sample.</p></div></div><div id="monthly" class="table-scroll"></div></section><section class="card"><div class="card-heading"><div><h3>Signal exposure</h3><p>Profitability and classification are separate questions.</p></div></div><div id="exposure"></div></section></div>
+        <section class="card"><div class="card-heading"><div><h3>Historical signal ledger</h3><p>Latest 12 observations in the selected historical period. These are not current forecasts.</p></div></div><div id="ledger" class="table-scroll"></div></section>
+      </section>
+      <section id="validation" class="tab-panel" aria-label="Model validation" hidden>
+        <div class="section-heading"><div><p class="eyebrow">GENERALIZATION, NOT JUST FIT</p><h2>Model validation</h2></div><a class="button secondary" href="https://github.com/divyamistry2224/QuantDS-Projects/tree/main/market-direction-prediction/reports">Inspect all artifacts →</a></div>
+        <section class="card"><h3>Chronological protocol</h3><div class="timeline"><div><span>2006–2018</span><b>Initial training</b><p>Past observations only</p></div><div><span>2019–2021</span><b>Original validation</b><p>3 annual expanding folds</p></div><div><span>2022–2025</span><b>Original holdout</b><p>Preserved first evaluation</p></div><div class="fresh"><span>JAN–OCT 2026</span><b>Fresh extension test</b><p>One selected configuration</p></div></div><p class="footnote">After observing the first result, the extension explicitly reuses 2019–2025 as development. It does not continue to call 2022–2025 untouched. A five-session purge separates training labels from each evaluation window.</p></section>
+        <section class="card"><div class="card-heading"><div><h3>Original model & feature comparison</h3><p>Selection uses validation balanced accuracy. Holdout results are reported for transparency.</p></div></div><div id="model-table" class="table-scroll"></div></section>
+        <div class="two-columns"><section class="card"><div class="card-heading"><div><h3>Does sentiment add information?</h3><p>Matched original validation folds · change versus market-only features</p></div></div><div id="ablation"></div></section><section class="card"><div class="card-heading"><div><h3>Probability reliability</h3><p>Fresh selected model · raw probabilities, not post-calibrated</p></div></div><div id="calibration" class="chart small-chart"></div><p class="footnote">Perfect calibration follows the diagonal. A short sample and sparse probability bins make this diagnostic uncertain.</p></section></div>
+        <section id="extension-section" class="card"><div class="card-heading"><div><h3>Extension search: what changed</h3><p>Short-term reversal, cross-asset context, rolling training windows and validation-only threshold selection.</p></div></div><div id="extension-summary"></div><div id="search-table" class="table-scroll"></div><p class="footnote">32 candidate configurations × 16 threshold choices create selection risk. Only the development winner was evaluated on the fresh sample. The search is recorded in full.</p></section>
+        <div class="two-columns"><section class="card"><div class="card-heading"><div><h3>Training feature importance</h3><p id="importance-note"></p></div></div><div id="importance"></div><p class="footnote">Normalized model importance (or absolute standardized logistic coefficients). Association, not causation; not directly comparable across model families.</p></section><section class="card"><div class="card-heading"><div><h3>Uncertainty matters</h3><p>Block resampling retains short-run dependence.</p></div></div><div id="uncertainty"></div></section></div>
+      </section>
+      <section id="data" class="tab-panel" aria-label="Data and methodology" hidden>
+        <div class="section-heading"><div><p class="eyebrow">TRACEABLE INPUTS, EXPLICIT ASSUMPTIONS</p><h2>Data & methodology</h2></div><a class="button secondary" href="https://github.com/divyamistry2224/QuantDS-Projects/tree/main/market-direction-prediction/data/raw">Inspect source snapshots →</a></div>
+        <div class="two-columns"><section class="card"><h3>Research question</h3><p class="body-copy">Can public news sentiment and macroeconomic conditions improve next-session SPY direction prediction beyond market features? This is a test of incremental information, followed by a separate assessment of whether a long/cash implementation survives assumed costs.</p><div class="formula"><span>TARGET</span><code>1[ close(t+1) / open(t+1) − 1 &gt; 0 ]</code></div><p class="body-copy">The signal uses information through session t’s close. It is executed at the next open and closed at that session’s close. Zero-return sessions count as “not up.”</p></section><section class="card"><h3>What the sentiment variable means</h3><p class="body-copy">The San Francisco Fed’s Daily News Sentiment Index summarizes sentiment in economic news. It is a broad economic-news proxy—not a SPY-specific earnings signal, social-media feed or custom sentiment classifier.</p><p class="body-copy">The project engineers levels, rolling averages, changes and standardized values from that published index. It does not claim to have trained a language model or collected proprietary news.</p><a class="text-link" href="https://www.frbsf.org/research-and-insights/data-and-indicators/daily-news-sentiment-index/" target="_blank" rel="noopener">Read the provider’s methodology →</a></section></div>
+        <section class="card"><h3>Sources & assumed availability</h3><div class="table-scroll"><table><thead><tr><th>Input</th><th>Source / series</th><th>Availability assumption</th><th>Research use</th></tr></thead><tbody><tr><td>Price & volume</td><td>Yahoo Finance · SPY</td><td>Signal-date close</td><td>Momentum, volatility, reversal, liquidity proxy</td></tr><tr><td>Rates, curve & volatility</td><td>FRED · DFF, T10Y2Y, VIXCLS</td><td>Observation + 2 business days</td><td>Policy stance, term spread, risk regime</td></tr><tr><td>Labor & inflation</td><td>FRED · UNRATE, CPIAUCSL</td><td>Month end + 45 calendar days</td><td>Labor conditions, CPI year-over-year</td></tr><tr><td>News sentiment</td><td>Federal Reserve Bank of San Francisco</td><td>Observation + 7 calendar days</td><td>News tone, trend and change</td></tr><tr><td>Cross-asset context</td><td>Yahoo · QQQ, IWM, TLT, HYG, GLD, UUP</td><td>Signal-date close · extension only</td><td>Equity breadth, credit, duration, gold, dollar</td></tr></tbody></table></div><div class="notice"><b>Historical availability is approximated.</b> These are latest-vintage downloads. Publication lags help prevent obvious date leakage but cannot remove revisions or certify point-in-time tradability. Exchange holidays are not explicitly modeled in the assumed business-day lags.</div></section>
+        <div class="two-columns"><section class="card"><h3>Evaluation rules</h3><ul class="detail-list"><li>Fixed original hyperparameters, with market-only, macro, sentiment and combined feature ablations.</li><li>Extension search and fresh-test dates committed before its evaluation.</li><li>Balanced accuracy and AUC measure discrimination; Brier score and log loss assess probability quality.</li><li>Net return, zero-rate Sharpe, drawdown, exposure and hit rate measure implementation.</li><li>Costs charged on every entry and exit; no free turnover for consecutive signals.</li><li>Block bootstrap intervals describe uncertainty; they are not multiple-testing-adjusted proof of alpha.</li></ul></section><section class="card"><h3>Limits & next research steps</h3><ul class="detail-list"><li>One ETF and a short fresh sample cannot establish robustness across asset classes or firms.</li><li>Replace revised data with licensed point-in-time data before investment use.</li><li>Validate longer forecast horizons suited to slow-moving macro signals.</li><li>Collect forward paper-trading observations with immutable timestamps.</li><li>Estimate realized spreads, slippage, capacity and cash financing.</li><li>Independent model review should precede any deployment.</li></ul></section></div>
+        <section class="card"><div class="card-heading"><div><h3>Reproduce the research</h3><p>Committed snapshots work without API keys. Refreshing data is optional and changes the experiment.</p></div></div><pre class="code"><code>git clone https://github.com/divyamistry2224/QuantDS-Projects.git
+cd QuantDS-Projects/market-direction-prediction
+python -m venv .venv
+source .venv/bin/activate
+pip install -e '.[dev]'
+market-direction verify
+pytest -q
+market-direction run
+market-direction extension-run</code></pre><div id="provenance"></div></section>
+      </section>
+      <footer><span>Divya Mistry · Market Direction Research</span><span>Historical research. No live forecasts or execution.</span><a href="https://github.com/divyamistry2224/QuantDS-Projects/tree/main/market-direction-prediction">Source & reproducibility →</a></footer>
+    </div>
+  </main>
+</div>
+</body>
+</html>
