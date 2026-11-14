@@ -36,6 +36,8 @@ spy_data.to_csv("SPY_data.csv")
 
 An end-to-end financial machine learning research project combining public market data, economic-news sentiment and macroeconomic indicators. Includes CatBoost, Random Forest and additional model comparisons, time-aligned features, chronological validation, transaction-cost-aware backtests, and an interactive dashboard.
 
-**[Open the live dashboard](https://divyamistry2224.github.io/QuantDS-Projects/market-direction/)** · **[Project source & detailed README](market-direction-prediction/)** · [Research note (PDF)](market-direction-prediction/reports/market_research_note.pdf) · [Executed notebook](market-direction-prediction/notebooks/research_walkthrough.ipynb)
+**[Research dashboard](https://divyamistry2224.github.io/QuantDS-Projects/market-direction/)** · **[Project source & detailed README](market-direction-prediction/)** · [Research note (PDF)](market-direction-prediction/reports/market_research_note.pdf) · [Executed notebook](market-direction-prediction/notebooks/research_walkthrough.ipynb)
 
 Measured outcomes include **+12.15% historical net return** for the validation-selected original strategy over 2022–2025, and **53.53% balanced accuracy** for the enhanced CatBoost on the fresh 2026 sample. Periods, baselines, costs and limitations are documented; historical profitability is distinct from proof of future returns.
+
+Dashboard hosting: enable **GitHub Pages → Deploy from a branch → main → /docs** in [repository settings](https://github.com/divyamistry2224/QuantDS-Projects/settings/pages). All dashboard files and research outputs are already committed.
